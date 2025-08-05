@@ -100,9 +100,6 @@ export async function subscribeToMailchimp(formData: FormData): Promise<Mailchim
     // Try to send welcome email, but don't fail if it doesn't work
     try {
       const emailResult = await sendWelcomeEmail(formData)
-      if (emailResult.warning) {
-        console.log('Email warning:', emailResult.warning)
-      }
     } catch (emailError) {
       console.error('Welcome email error:', emailError)
     }

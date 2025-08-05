@@ -16,13 +16,10 @@ export async function sendWelcomeEmail(data: EmailData) {
     console.error("❌ RESEND_API_KEY is not set")
     return { success: false, error: "Email service not configured" }
   }
-  try {
-    // For production, we'll use a verified domain
-    // For development/testing, we'll use the onboarding domain
-    const fromEmail = "ShineTTW <onboarding@resend.dev>"
 
+  try {
     const { data: emailResult, error } = await resend.emails.send({
-      from: fromEmail,
+      from: 'onboarding@resend.dev',
       to: [data.email],
       subject: '🎵 You\'re confirmed for ShineTTW Live Event!',
       html: `
@@ -172,17 +169,11 @@ export async function sendWelcomeEmail(data: EmailData) {
     })
 
     if (error) {
-      console.error('Email sending error:', error)
-      
-      // Handle specific domain verification errors
-      if (error.message?.includes('domain is not verified') || error.message?.includes('only send testing emails')) {
-        console.log('Domain verification required for production emails. Contact added to Mailchimp successfully.')
-        return { success: true, warning: 'Email not sent - domain verification required' }
-      }
-      
+      console.log('🔍 Resend API Response:', error)
       return { success: false, error: error.message }
     }
 
+    console.log("✅ Email sent successfully to:", data.email)
     return { success: true, data: emailResult }
   } catch (error) {
     console.error('Email service error:', error)
