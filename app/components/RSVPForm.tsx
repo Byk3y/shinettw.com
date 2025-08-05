@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useState } from 'react'
-import { subscribeToMailchimp } from '../actions'
+import { subscribeToEvent } from '../actions'
 
 interface FormData {
   fullName: string
@@ -70,7 +70,7 @@ export default function RSVPForm({ onSuccess }: RSVPFormProps) {
     setSubmitMessage(null)
 
     try {
-      const result = await subscribeToMailchimp(formData)
+      const result = await subscribeToEvent(formData)
       
       if (result.success) {
         setSubmitMessage({ type: 'success', message: result.message })

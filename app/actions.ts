@@ -8,25 +8,13 @@ interface FormData {
   phone: string
 }
 
-interface MailchimpResponse {
+interface Response {
   success: boolean
   message: string
 }
 
-export async function subscribeToMailchimp(formData: FormData): Promise<MailchimpResponse> {
+export async function subscribeToEvent(formData: FormData): Promise<Response> {
   try {
-    const apiKey = process.env.MAILCHIMP_API_KEY
-    const listId = process.env.MAILCHIMP_LIST_ID
-    const dc = process.env.MAILCHIMP_DC
-
-    if (!apiKey || !listId || !dc) {
-      console.error('Missing Mailchimp environment variables')
-      return {
-        success: false,
-        message: 'Server configuration error. Please try again later.'
-      }
-    }
-
     if (!formData.email || !formData.fullName || !formData.phone) {
       return {
         success: false,
@@ -61,47 +49,22 @@ export async function subscribeToMailchimp(formData: FormData): Promise<Mailchim
       normalizedPhone = '+234' + cleanPhone
     }
 
-    const payload = {
-      email_address: formData.email.toLowerCase().trim(),
-      status: 'subscribed',
-      merge_fields: {
-        FNAME: formData.fullName.trim(),
-        PHONE: normalizedPhone
-      }
-    }
-
-    const response = await fetch(
-      `https://${dc}.api.mailchimp.com/3.0/lists/${listId}/members`,
-      {
-        method: 'POST',
-        headers: {
-          'Authorization': `Basic ${Buffer.from(`anystring:${apiKey}`).toString('base64')}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      }
-    )
-
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}))
-      if (response.status === 400 && errorData.title === 'Member Exists') {
-        return {
-          success: false,
-          message: 'This email is already subscribed to our list.'
-        }
-      }
-      console.error('Mailchimp API error:', errorData)
-      return {
-        success: false,
-        message: 'Unable to subscribe at this time. Please try again later.'
-      }
-    }
-
-    // Try to send welcome email, but don't fail if it doesn't work
+    // Send welcome email via Resend
     try {
       const emailResult = await sendWelcomeEmail(formData)
+      if (!emailResult.success) {
+        console.error('Email sending failed:', emailResult.error)
+        return {
+          success: false,
+          message: 'Unable to send confirmation email. Please try again later.'
+        }
+      }
     } catch (emailError) {
       console.error('Welcome email error:', emailError)
+      return {
+        success: false,
+        message: 'Unable to send confirmation email. Please try again later.'
+      }
     }
 
     return {
