@@ -10,7 +10,7 @@ interface EmailData {
 
 export async function sendWelcomeEmail(data: EmailData) {
   try {
-    // Use Resend's default domain for immediate functionality
+    // For production, we'll use a verified domain
     // For development/testing, we'll use the onboarding domain
     const fromEmail = "ShineTTW <onboarding@resend.dev>"
 
