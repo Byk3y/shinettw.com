@@ -9,6 +9,13 @@ interface EmailData {
 }
 
 export async function sendWelcomeEmail(data: EmailData) {
+  console.log("📧 Attempting to send email to:", data.email)
+  
+  const apiKey = process.env.RESEND_API_KEY
+  if (!apiKey) {
+    console.error("❌ RESEND_API_KEY is not set")
+    return { success: false, error: "Email service not configured" }
+  }
   try {
     // For production, we'll use a verified domain
     // For development/testing, we'll use the onboarding domain
@@ -165,7 +172,7 @@ export async function sendWelcomeEmail(data: EmailData) {
     })
 
     if (error) {
-      console.log('🔍 Resend API Response:', error)
+      console.error('Email sending error:', error)
       
       // Handle specific domain verification errors
       if (error.message?.includes('domain is not verified') || error.message?.includes('only send testing emails')) {
