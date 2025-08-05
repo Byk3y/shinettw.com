@@ -10,8 +10,15 @@ interface EmailData {
 
 export async function sendWelcomeEmail(data: EmailData) {
   try {
+    // For production, we'll use a verified domain
+    // For development/testing, we'll use the onboarding domain
+    const isProduction = process.env.NODE_ENV === 'production'
+    const fromEmail = isProduction 
+      ? 'ShineTTW <noreply@shinetw.com>' 
+      : 'ShineTTW <onboarding@resend.dev>'
+
     const { data: emailResult, error } = await resend.emails.send({
-      from: 'ShineTTW <onboarding@resend.dev>',
+      from: fromEmail,
       to: [data.email],
       subject: '🎵 You\'re confirmed for ShineTTW Live Event!',
       html: `
@@ -162,6 +169,13 @@ export async function sendWelcomeEmail(data: EmailData) {
 
     if (error) {
       console.error('Email sending error:', error)
+      
+      // Handle specific domain verification errors
+      if (error.message?.includes('domain is not verified') || error.message?.includes('only send testing emails')) {
+        console.log('Domain verification required for production emails. Contact added to Mailchimp successfully.')
+        return { success: true, warning: 'Email not sent - domain verification required' }
+      }
+      
       return { success: false, error: error.message }
     }
 

@@ -15,7 +15,6 @@ interface MailchimpResponse {
 
 export async function subscribeToMailchimp(formData: FormData): Promise<MailchimpResponse> {
   try {
-    // Validate environment variables
     const apiKey = process.env.MAILCHIMP_API_KEY
     const listId = process.env.MAILCHIMP_LIST_ID
     const dc = process.env.MAILCHIMP_DC
@@ -28,7 +27,6 @@ export async function subscribeToMailchimp(formData: FormData): Promise<Mailchim
       }
     }
 
-    // Validate input data
     if (!formData.email || !formData.fullName || !formData.phone) {
       return {
         success: false,
@@ -36,7 +34,6 @@ export async function subscribeToMailchimp(formData: FormData): Promise<Mailchim
       }
     }
 
-    // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(formData.email)) {
       return {
@@ -45,15 +42,9 @@ export async function subscribeToMailchimp(formData: FormData): Promise<Mailchim
       }
     }
 
-    // Nigerian phone validation (accepts various formats)
     const cleanPhone = formData.phone.replace(/[\s\-\(\)]/g, '')
-    
-    // Nigerian phone patterns:
-    // +234XXXXXXXXX (international format)
-    // 234XXXXXXXXX (without +)
-    // 0XXXXXXXXX (local format starting with 0)
     const nigerianPhoneRegex = /^(\+?234|0)?[789][01]\d{8}$/
-    
+
     if (!nigerianPhoneRegex.test(cleanPhone)) {
       return {
         success: false,
@@ -61,7 +52,6 @@ export async function subscribeToMailchimp(formData: FormData): Promise<Mailchim
       }
     }
 
-    // Normalize phone number to international format for storage
     let normalizedPhone = cleanPhone
     if (cleanPhone.startsWith('0')) {
       normalizedPhone = '+234' + cleanPhone.substring(1)
@@ -71,7 +61,6 @@ export async function subscribeToMailchimp(formData: FormData): Promise<Mailchim
       normalizedPhone = '+234' + cleanPhone
     }
 
-    // Prepare the request payload
     const payload = {
       email_address: formData.email.toLowerCase().trim(),
       status: 'subscribed',
@@ -81,7 +70,6 @@ export async function subscribeToMailchimp(formData: FormData): Promise<Mailchim
       }
     }
 
-    // Make the API request to Mailchimp
     const response = await fetch(
       `https://${dc}.api.mailchimp.com/3.0/lists/${listId}/members`,
       {
@@ -96,15 +84,12 @@ export async function subscribeToMailchimp(formData: FormData): Promise<Mailchim
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}))
-      
-      // Handle specific Mailchimp errors
       if (response.status === 400 && errorData.title === 'Member Exists') {
         return {
           success: false,
           message: 'This email is already subscribed to our list.'
         }
       }
-      
       console.error('Mailchimp API error:', errorData)
       return {
         success: false,
@@ -112,12 +97,14 @@ export async function subscribeToMailchimp(formData: FormData): Promise<Mailchim
       }
     }
 
-    // Send custom welcome email
+    // Try to send welcome email, but don't fail if it doesn't work
     try {
-      await sendWelcomeEmail(formData)
+      const emailResult = await sendWelcomeEmail(formData)
+      if (emailResult.warning) {
+        console.log('Email warning:', emailResult.warning)
+      }
     } catch (emailError) {
       console.error('Welcome email error:', emailError)
-      // Don't fail the whole process if email fails
     }
 
     return {
