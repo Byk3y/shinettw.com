@@ -165,7 +165,7 @@ export async function sendWelcomeEmail(data: EmailData) {
     })
 
     if (error) {
-      console.error('Email sending error:', error)
+      console.log('🔍 Resend API Response:', error)
       
       // Handle specific domain verification errors
       if (error.message?.includes('domain is not verified') || error.message?.includes('only send testing emails')) {
