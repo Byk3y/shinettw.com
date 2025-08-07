@@ -19,7 +19,7 @@ export async function sendWelcomeEmail(data: EmailData) {
 
   try {
     const { data: emailResult, error } = await resend.emails.send({
-      from: 'ShineTTW <noreply@shinettw.com>',
+      from: 'onboarding@resend.dev',
       to: [data.email],
                         subject: '🎵 You\'re confirmed for Ctrl Shine Live Event!',
       html: `
