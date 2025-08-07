@@ -13,31 +13,21 @@ async function createContact(data: EmailData) {
   try {
     console.log("📝 Creating contact in Resend Audiences...")
     
-    const response = await fetch('https://api.resend.com/contacts', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: data.email,
-        firstName: data.fullName.split(' ')[0],
-        lastName: data.fullName.split(' ').slice(1).join(' ') || '',
-        phone: data.phone,
-        unsubscribed: false,
-        audienceId: 'general' // Default audience
-      })
+    const { data: contactResult, error } = await resend.contacts.create({
+      email: data.email,
+      firstName: data.fullName.split(' ')[0],
+      lastName: data.fullName.split(' ').slice(1).join(' ') || '',
+      unsubscribed: false,
+      audienceId: 'general' // Default audience
     })
 
-    if (!response.ok) {
-      const error = await response.json()
+    if (error) {
       console.log('❌ Contact creation failed:', error)
       return false
     }
 
-    const result = await response.json()
     console.log('✅ Contact created successfully:', data.email)
-    console.log('📊 Contact ID:', result.id)
+    console.log('📊 Contact ID:', contactResult.id)
     return true
   } catch (error) {
     console.error('❌ Contact creation error:', error)
