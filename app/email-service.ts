@@ -10,6 +10,8 @@ interface EmailData {
 
 export async function sendWelcomeEmail(data: EmailData) {
   console.log("📧 Attempting to send email to:", data.email)
+  console.log("🔑 API Key exists:", !!process.env.RESEND_API_KEY)
+  console.log("🔑 API Key starts with:", process.env.RESEND_API_KEY?.substring(0, 10))
   
   const apiKey = process.env.RESEND_API_KEY
   if (!apiKey) {
@@ -168,10 +170,11 @@ export async function sendWelcomeEmail(data: EmailData) {
       `,
     })
 
-    if (error) {
-      console.log('🔍 Resend API Response:', error)
-      return { success: false, error: error.message }
-    }
+                    if (error) {
+                  console.log('🔍 Resend API Response:', error)
+                  console.log('🔍 Error details:', JSON.stringify(error, null, 2))
+                  return { success: false, error: error.message }
+                }
 
     console.log("✅ Email sent successfully to:", data.email)
     return { success: true, data: emailResult }
