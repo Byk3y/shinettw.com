@@ -21,7 +21,10 @@ async function createContact(data: EmailData) {
       firstName: data.fullName.split(' ')[0],
       lastName: data.fullName.split(' ').slice(1).join(' ') || '',
       unsubscribed: false,
-      audienceId: audienceId
+      audienceId: audienceId,
+      customFields: {
+        phone: data.phone
+      }
     })
 
     if (error) {
@@ -31,6 +34,7 @@ async function createContact(data: EmailData) {
 
     console.log('✅ Contact created successfully:', data.email)
     console.log('📊 Contact ID:', contactResult.id)
+    console.log('📱 Phone number saved as custom field:', data.phone)
     return true
   } catch (error) {
     console.error('❌ Contact creation error:', error)
