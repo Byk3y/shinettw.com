@@ -13,14 +13,8 @@ async function createContact(data: EmailData) {
   try {
     console.log("📝 Creating contact in Resend Audiences...")
     
-    // TODO: Replace with your actual audience ID from Resend dashboard
-    // Go to https://resend.com/audiences and copy the audience ID
-    const audienceId = process.env.RESEND_AUDIENCE_ID || 'your-audience-id-here'
-    
-    if (audienceId === 'your-audience-id-here') {
-      console.log('⚠️ Please set RESEND_AUDIENCE_ID environment variable')
-      return false
-    }
+    // Using the GENERAL audience ID from Resend dashboard
+    const audienceId = process.env.RESEND_AUDIENCE_ID || '686ea424-3e2c-4269-970f-438f319f107b'
     
     const { data: contactResult, error } = await resend.contacts.create({
       email: data.email,
