@@ -26,37 +26,37 @@ export default function Home() {
       
       {/* Main Content Overlay */}
       <div className="relative z-10 flex flex-col justify-center items-center min-h-screen px-4 text-center">
-        {/* Event Title */}
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 font-sora drop-shadow-lg">
-          ShineTTW
-        </h1>
-        
-        {/* Event Subtitle */}
-        <p className="text-xl sm:text-2xl text-white/90 font-medium mb-6 drop-shadow-lg">
-          Live Event
-        </p>
+                            {/* Event Title */}
+                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 font-sora drop-shadow-lg">
+                      Ctrl Shine
+                    </h1>
+                    
+                    {/* Event Subtitle */}
+                    <p className="text-xl sm:text-2xl text-white/90 font-medium mb-6 drop-shadow-lg">
+                      Live Event
+                    </p>
         
         {/* Event Details */}
         <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-8 max-w-sm mx-auto">
           <div className="space-y-3 text-white">
-            <div className="flex items-center justify-center space-x-2">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              <span className="font-medium">Saturday, August 10</span>
-            </div>
-            <div className="flex items-center justify-center space-x-2">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              </svg>
-              <span className="font-medium">Lagos, Nigeria</span>
-            </div>
-            <div className="flex items-center justify-center space-x-2">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span className="font-medium">8:00 PM - 11:00 PM</span>
-            </div>
+                                    <div className="flex items-center justify-center space-x-2">
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
+                          <span className="font-medium">Friday, 15th June</span>
+                        </div>
+                        <div className="flex items-center justify-center space-x-2">
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          </svg>
+                          <span className="font-medium">Venue: To Be Announced</span>
+                        </div>
+                        <div className="flex items-center justify-center space-x-2">
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="font-medium">5:00 PM - 11:00 PM</span>
+                        </div>
           </div>
         </div>
         

@@ -3,32 +3,32 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'ShineTTW Live Event - Saturday, August 10, Lagos, Nigeria',
-  description: 'Join ShineTTW for an unforgettable live music experience in Lagos, Nigeria. RSVP now to secure your spot and get exclusive updates.',
-  keywords: 'ShineTTW, live music, Lagos, Nigeria, concert, event, August 10',
+  title: 'Ctrl Shine Live Event - Friday, 15th June',
+  description: 'Join Ctrl Shine for an unforgettable live music experience. RSVP now to secure your spot and get exclusive updates.',
+  keywords: 'Ctrl Shine, live music, concert, event, June 15',
   authors: [{ name: 'ShineTTW' }],
-  openGraph: {
-    title: 'ShineTTW Live Event - Saturday, August 10',
-    description: 'Join ShineTTW for an unforgettable live music experience in Lagos, Nigeria.',
-    url: 'https://shinetw.com',
-    siteName: 'ShineTTW Live Event',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'ShineTTW Live Event',
-      },
-    ],
+      openGraph: {
+      title: 'Ctrl Shine Live Event - Friday, 15th June',
+      description: 'Join Ctrl Shine for an unforgettable live music experience.',
+      url: 'https://shinetw.com',
+      siteName: 'Ctrl Shine Live Event',
+          images: [
+        {
+          url: '/og-image.jpg',
+          width: 1200,
+          height: 630,
+          alt: 'Ctrl Shine Live Event',
+        },
+      ],
     locale: 'en_US',
     type: 'website',
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'ShineTTW Live Event - Saturday, August 10',
-    description: 'Join ShineTTW for an unforgettable live music experience in Lagos, Nigeria.',
-    images: ['/og-image.jpg'],
-  },
+      twitter: {
+      card: 'summary_large_image',
+      title: 'Ctrl Shine Live Event - Friday, 15th June',
+      description: 'Join Ctrl Shine for an unforgettable live music experience.',
+      images: ['/og-image.jpg'],
+    },
   robots: {
     index: true,
     follow: true,

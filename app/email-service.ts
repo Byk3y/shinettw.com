@@ -19,16 +19,16 @@ export async function sendWelcomeEmail(data: EmailData) {
 
   try {
     const { data: emailResult, error } = await resend.emails.send({
-      from: 'onboarding@resend.dev',
+      from: 'ShineTTW <noreply@shinettw.com>',
       to: [data.email],
-      subject: '🎵 You\'re confirmed for ShineTTW Live Event!',
+                        subject: '🎵 You\'re confirmed for Ctrl Shine Live Event!',
       html: `
         <!DOCTYPE html>
         <html>
         <head>
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>ShineTTW Live Event Confirmation</title>
+          <title>Ctrl Shine Live Event Confirmation</title>
           <style>
             body {
               font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -109,7 +109,7 @@ export async function sendWelcomeEmail(data: EmailData) {
           <div class="container">
             <div class="header">
               <div class="title">🎉 You're Confirmed!</div>
-              <div class="subtitle">Hi ${data.fullName}, you've successfully saved your spot for the ShineTTW Live Event!</div>
+              <div class="subtitle">Hi ${data.fullName}, you've successfully saved your spot for the Ctrl Shine Live Event!</div>
             </div>
             
             <div class="event-details">
@@ -117,20 +117,20 @@ export async function sendWelcomeEmail(data: EmailData) {
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
-                <strong>Date:</strong> Saturday, August 10, 2024
-              </div>
-              <div class="event-detail">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <strong>Time:</strong> 8:00 PM - 11:00 PM
-              </div>
-              <div class="event-detail">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                </svg>
-                <strong>Venue:</strong> Lagos Convention Center, Victoria Island, Lagos
+                                            <strong>Date:</strong> Friday, 15th June, 2024
+                          </div>
+                          <div class="event-detail">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <strong>Time:</strong> 5:00 PM - 11:00 PM
+                          </div>
+                          <div class="event-detail">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <strong>Venue:</strong> To Be Announced
               </div>
             </div>
             
@@ -143,10 +143,10 @@ export async function sendWelcomeEmail(data: EmailData) {
             </div>
             
             <div style="background: #ecfdf5; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #10b981;">
-              <strong>📱 Important Notes:</strong><br>
-              • Doors open at 7:30 PM<br>
-              • Free entry (you're already on the guest list!)<br>
-              • Bring your energy and dancing shoes!
+                                        <strong>📱 Important Notes:</strong><br>
+                          • Doors open at 4:30 PM<br>
+                          • Free entry (you're already on the guest list!)<br>
+                          • Bring your energy and dancing shoes!
             </div>
             
             <p>We'll send you updates and reminders as the event approaches. If you have any questions, feel free to reply to this email.</p>
@@ -157,10 +157,10 @@ export async function sendWelcomeEmail(data: EmailData) {
             
             <div class="footer">
               <p><strong>Best regards,</strong><br>The ShineTTW Team</p>
-              <p style="font-size: 12px; margin-top: 20px;">
-                You're receiving this email because you RSVP'd for the ShineTTW Live Event.<br>
-                Phone: ${data.phone}
-              </p>
+                                        <p style="font-size: 12px; margin-top: 20px;">
+                            You're receiving this email because you RSVP'd for the Ctrl Shine Live Event.<br>
+                            Phone: ${data.phone}
+                          </p>
             </div>
           </div>
         </body>
