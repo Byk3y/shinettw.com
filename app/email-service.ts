@@ -21,7 +21,7 @@ export async function sendWelcomeEmail(data: EmailData) {
 
   try {
     const { data: emailResult, error } = await resend.emails.send({
-      from: 'onboarding@resend.dev',
+      from: 'ShineTTW <noreply@shinettw.com>',
       to: [data.email],
                         subject: '🎵 You\'re confirmed for Ctrl Shine Live Event!',
       html: `
@@ -173,7 +173,9 @@ export async function sendWelcomeEmail(data: EmailData) {
                     if (error) {
                   console.log('🔍 Resend API Response:', error)
                   console.log('🔍 Error details:', JSON.stringify(error, null, 2))
-                  return { success: false, error: error.message }
+                  console.log('🔍 Error type:', typeof error)
+                  console.log('🔍 Error keys:', Object.keys(error || {}))
+                  return { success: false, error: error.message || 'Unknown error from Resend' }
                 }
 
     console.log("✅ Email sent successfully to:", data.email)
