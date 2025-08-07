@@ -15,7 +15,11 @@ export default function Home() {
           loop
           muted
           playsInline
+          preload="auto"
           className="w-full h-full object-cover"
+          onLoadStart={() => console.log('Video loading started')}
+          onCanPlay={() => console.log('Video can play')}
+          onError={(e) => console.error('Video error:', e)}
         >
           <source src="https://cdn.midjourney.com/video/2af3197f-999f-4865-892d-b20de18db32a/0.mp4" type="video/mp4" />
           Your browser does not support the video tag.
