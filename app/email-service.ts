@@ -22,9 +22,7 @@ async function createContact(data: EmailData) {
       lastName: data.fullName.split(' ').slice(1).join(' ') || '',
       unsubscribed: false,
       audienceId: audienceId,
-      customFields: {
-        phone: data.phone
-      }
+
     })
 
     if (error) {
@@ -34,7 +32,7 @@ async function createContact(data: EmailData) {
 
     console.log('✅ Contact created successfully:', data.email)
     console.log('📊 Contact ID:', contactResult.id)
-    console.log('📱 Phone number saved as custom field:', data.phone)
+
     return true
   } catch (error) {
     console.error('❌ Contact creation error:', error)
@@ -57,7 +55,7 @@ export async function sendWelcomeEmail(data: EmailData) {
     const { data: emailResult, error } = await resend.emails.send({
       from: 'ShineTTW <noreply@shinettw.com>',
       to: [data.email],
-      subject: '🎵 You\'re confirmed for Ctrl Shine Live Event!',
+                        subject: '🎵 You\'re confirmed for ShineTTW Live Event!',
       html: `
         <!DOCTYPE html>
         <html>
@@ -143,53 +141,54 @@ export async function sendWelcomeEmail(data: EmailData) {
         </head>
         <body>
           <div class="container">
-            <div class="header">
-              <div class="title">🎉 You're Confirmed!</div>
-              <div class="subtitle">Hi ${data.fullName}, you've successfully saved your spot for the Ctrl Shine Live Event!</div>
-            </div>
+                                    <div class="header">
+                          <div class="title">🎉 You're Confirmed!</div>
+                          <div class="subtitle">Hey ${data.fullName} 😉</div>
+                        </div>
             
-            <div class="event-details">
-              <div class="event-detail">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                </svg>
-                <strong>Date:</strong> Friday, 15th June, 2024
-              </div>
-              <div class="event-detail">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <strong>Time:</strong> 5:00 PM - 11:00 PM
-              </div>
-              <div class="event-detail">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                </svg>
-                <strong>Venue:</strong> To Be Announced
-              </div>
-            </div>
+                                    <div class="event-details">
+                          <div class="event-detail">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <strong>Date:</strong> Friday, 15th August, 2025
+                          </div>
+                          <div class="event-detail">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <strong>Time:</strong> 5:00 PM - 11:30 PM (NO AFRICAN TIME)
+                          </div>
+                          <div class="event-detail">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <strong>Venue:</strong> To Be Announced
+                          </div>
+                        </div>
             
-            <div class="highlight">
-              <strong>🎵 What to Expect:</strong><br>
-              • 3 hours of non-stop entertainment<br>
-              • Live performance by ShineTTW<br>
-              • Your favorite hits and exclusive new tracks<br>
-              • An unforgettable evening of music and energy
-            </div>
+                                    <div class="highlight">
+                          <strong>🎵 What to Expect:</strong><br>
+                          • Get ready to light up your Friday!<br>
+                          • Unforgettable night with performances from ShineTTW<br>
+                          • Surprise sets from your favorite artists & DJs<br>
+                          • High energy & good vibes filled event 🥳
+                        </div>
             
-            <div style="background: #ecfdf5; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #10b981;">
-              <strong>📱 Important Notes:</strong><br>
-              • Doors open at 4:30 PM<br>
-              • Free entry (you're already on the guest list!)<br>
-              • Bring your energy and dancing shoes!
-            </div>
+                                    <div style="background: #ecfdf5; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #10b981;">
+                          <strong>📱 Important Notes:</strong><br>
+                          • Doors open at 4:30 PM<br>
+                          • Free entry (you're already on the guest list!)<br>
+                          • Bring your energy and dancing shoes!<br>
+                          • NO AFRICAN TIME - Be on time! ⏰
+                        </div>
             
             <p>We'll send you updates and reminders as the event approaches. If you have any questions, feel free to reply to this email.</p>
             
-            <p style="text-align: center; font-size: 18px; font-weight: bold; color: #ef4444;">
-              See you there! 🎵
-            </p>
+                                    <p style="text-align: center; font-size: 18px; font-weight: bold; color: #ef4444;">
+                          See you there! 🎵🥳
+                        </p>
             
             <div class="footer">
               <p><strong>Best regards,</strong><br>The ShineTTW Team</p>

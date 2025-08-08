@@ -21,7 +21,7 @@ export default function Home() {
           onCanPlay={() => console.log('Video can play')}
           onError={(e) => console.error('Video error:', e)}
         >
-          <source src="https://cdn.midjourney.com/video/2af3197f-999f-4865-892d-b20de18db32a/0.mp4" type="video/mp4" />
+                                <source src="https://cdn.midjourney.com/video/350543a3-3c97-4364-9c41-d073c332b816/0.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         {/* Gradient overlay for better text readability */}
@@ -47,7 +47,7 @@ export default function Home() {
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                           </svg>
-                          <span className="font-medium">Friday, 15th June</span>
+                                                            <span className="font-medium">Friday, 15th August</span>
                         </div>
                         <div className="flex items-center justify-center space-x-2">
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -59,7 +59,7 @@ export default function Home() {
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          <span className="font-medium">5:00 PM - 11:00 PM</span>
+                                                            <span className="font-medium">5:00 PM - 11:30 PM</span>
                         </div>
           </div>
         </div>
