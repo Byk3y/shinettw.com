@@ -31,9 +31,9 @@ export default function Home() {
       {/* Main Content Overlay */}
       <div className="relative z-10 flex flex-col justify-center items-center min-h-screen px-4 text-center">
                             {/* Event Title */}
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 font-sora drop-shadow-lg">
-                      Ctrl Shine
-                    </h1>
+                                                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 font-sora drop-shadow-lg">
+                              CTRL + SHINE
+                            </h1>
                     
                     {/* Event Subtitle */}
                     <p className="text-xl sm:text-2xl text-white/90 font-medium mb-6 drop-shadow-lg">
