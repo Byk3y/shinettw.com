@@ -28,7 +28,7 @@ export default function RSVPForm({ onSuccess }: RSVPFormProps) {
   })
   const [errors, setErrors] = useState<FormErrors>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitMessage, setSubmitMessage] = useState<{ type: 'success' | 'error', message: string } | null>(null)
+  const [submitMessage, setSubmitMessage] = useState<{ type: 'error', message: string } | null>(null)
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {}
@@ -73,12 +73,9 @@ export default function RSVPForm({ onSuccess }: RSVPFormProps) {
       const result = await subscribeToEvent(formData)
       
       if (result.success) {
-        setSubmitMessage({ type: 'success', message: result.message })
         setFormData({ fullName: '', email: '', phone: '' })
-        // Call onSuccess callback after a short delay to show success message
-        setTimeout(() => {
-          onSuccess?.()
-        }, 2000)
+        // Call onSuccess callback immediately to show WhatsApp modal
+        onSuccess?.()
       } else {
         setSubmitMessage({ type: 'error', message: result.message })
       }
@@ -174,12 +171,8 @@ export default function RSVPForm({ onSuccess }: RSVPFormProps) {
         </button>
       </form>
 
-      {submitMessage && (
-        <div className={`mt-4 p-4 rounded-lg ${
-          submitMessage.type === 'success' 
-            ? 'bg-green-50 border border-green-200 text-green-800' 
-            : 'bg-red-50 border border-red-200 text-red-800'
-        }`}>
+      {submitMessage && submitMessage.type === 'error' && (
+        <div className="mt-4 p-4 rounded-lg bg-red-50 border border-red-200 text-red-800">
           <p className="text-sm font-medium">{submitMessage.message}</p>
         </div>
       )}

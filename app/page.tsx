@@ -2,9 +2,11 @@
 
 import React, { useState } from 'react'
 import RSVPForm from './components/RSVPForm'
+import WhatsAppCommunity from './components/WhatsAppCommunity'
 
 export default function Home() {
   const [showForm, setShowForm] = useState(false)
+  const [showWhatsApp, setShowWhatsApp] = useState(false)
 
   return (
     <main className="min-h-screen relative overflow-hidden">
@@ -104,10 +106,18 @@ export default function Home() {
             
             {/* Form */}
             <div className="p-6">
-              <RSVPForm onSuccess={() => setShowForm(false)} />
+              <RSVPForm onSuccess={() => {
+                setShowForm(false)
+                setShowWhatsApp(true)
+              }} />
             </div>
           </div>
         </div>
+      )}
+
+      {/* WhatsApp Community Modal */}
+      {showWhatsApp && (
+        <WhatsAppCommunity onClose={() => setShowWhatsApp(false)} />
       )}
     </main>
   )
