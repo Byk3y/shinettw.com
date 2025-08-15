@@ -1,12 +1,32 @@
-'use client'
+ 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import RSVPForm from './components/RSVPForm'
 import WhatsAppCommunity from './components/WhatsAppCommunity'
 
 export default function Home() {
   const [showForm, setShowForm] = useState(false)
   const [showWhatsApp, setShowWhatsApp] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  // Fixed closing time: 2 hours before event start (West Africa Time, UTC+1)
+  const eventStartMs = new Date('2025-08-15T17:00:00+01:00').getTime()
+  const closingDeadline = eventStartMs - 2 * 60 * 60 * 1000
+  const [timeLeftMs, setTimeLeftMs] = useState<number>(() => Math.max(closingDeadline - Date.now(), 0))
+
+  useEffect(() => {
+    setMounted(true)
+    const interval = setInterval(() => {
+      setTimeLeftMs(Math.max(closingDeadline - Date.now(), 0))
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [closingDeadline])
+
+  const isClosed = timeLeftMs <= 0
+  const hours = Math.floor(timeLeftMs / 3600000)
+  const minutes = Math.floor((timeLeftMs % 3600000) / 60000)
+  const seconds = Math.floor((timeLeftMs % 60000) / 1000)
+  const pad = (n: number) => n.toString().padStart(2, '0')
 
   return (
     <main className="min-h-screen relative overflow-hidden">
@@ -29,6 +49,33 @@ export default function Home() {
         {/* Gradient overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/40"></div>
       </div>
+      {/* Closing Soon / Closed banner */}
+      {(
+        <div className="fixed top-3 left-0 right-0 z-20 flex justify-center px-4">
+          {isClosed ? (
+            <div className="px-5 py-3 rounded-2xl shadow-2xl bg-red-600 text-white border border-white/20">
+              <p className="text-sm font-bold tracking-wide">RSVP is now closed. See you tonight!</p>
+            </div>
+          ) : (
+            <div className="rounded-2xl shadow-2xl bg-white/90 backdrop-blur px-4 py-3 border border-white/40">
+              <div className="text-[11px] sm:text-xs font-semibold text-gray-700 tracking-wide text-center">RSVP closes in</div>
+              <div className="mt-1 flex items-end justify-center gap-2 font-mono">
+                <div className="w-12 sm:w-14 px-2 py-1 rounded-lg bg-gray-900 text-white text-2xl sm:text-3xl font-extrabold text-center">
+                  {mounted ? pad(hours) : '--'}
+                </div>
+                <span className="text-lg sm:text-2xl font-bold text-gray-900">:</span>
+                <div className="w-12 sm:w-14 px-2 py-1 rounded-lg bg-gray-900 text-white text-2xl sm:text-3xl font-extrabold text-center">
+                  {mounted ? pad(minutes) : '--'}
+                </div>
+                <span className="text-lg sm:text-2xl font-bold text-gray-900">:</span>
+                <div className="w-12 sm:w-14 px-2 py-1 rounded-lg bg-gray-900 text-white text-2xl sm:text-3xl font-extrabold text-center">
+                  {mounted ? pad(seconds) : '--'}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
       
       {/* Main Content Overlay */}
       <div className="relative z-10 flex flex-col justify-center items-center min-h-screen px-4 text-center">
@@ -55,7 +102,7 @@ export default function Home() {
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                           </svg>
-                          <span className="font-medium">Venue: To Be Announced</span>
+                          <span className="font-medium">Venue: KAIRO's HUB</span>
                         </div>
                         <div className="flex items-center justify-center space-x-2">
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -69,9 +116,10 @@ export default function Home() {
         {/* CTA Button */}
         <button
           onClick={() => setShowForm(true)}
-          className="bg-white text-gray-900 font-bold py-4 px-8 rounded-full text-lg shadow-2xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
+          disabled={isClosed}
+          className="bg-white text-gray-900 font-bold py-4 px-8 rounded-full text-lg shadow-2xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Save a Spot
+          {isClosed ? 'RSVP Closed' : 'Save a Spot'}
         </button>
         
         {/* Footer */}
