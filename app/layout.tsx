@@ -44,21 +44,21 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'ShineTTW - Afro-Sentio Music Artist | Official Website',
-  description: 'Discover ShineTTW\'s Afro-Sentio music, featuring The Chosen One EP and collaborations with Bob Sinclar and Spinall. Stream TIME, I Go, and AUNTY MARY. Official artist website with music, videos, events, and latest updates.',
-  keywords: 'ShineTTW, Afro-Sentio, music artist, The Chosen One EP, TIME, I Go, AUNTY MARY, Bob Sinclar, Spinall, Nigerian music, Afrobeat, music streaming',
-  authors: [{ name: 'ShineTTW' }],
+  title: 'Shine TTW - Afro-Sentio Music Artist | Official Website',
+  description: 'Discover Shine TTW\'s Afro-Sentio music, featuring The Chosen One EP and collaborations with Bob Sinclar and Spinall. Stream TIME, I Go, and AUNTY MARY. Official artist website with music, videos, events, and latest updates.',
+  keywords: 'Shine TTW, Afro-Sentio, music artist, The Chosen One EP, TIME, I Go, AUNTY MARY, Bob Sinclar, Spinall, Nigerian music, Afrobeat, music streaming',
+  authors: [{ name: 'Shine TTW' }],
   openGraph: {
-    title: 'ShineTTW - Afro-Sentio Music Artist',
-    description: 'Discover ShineTTW\'s Afro-Sentio music, featuring The Chosen One EP and collaborations with Bob Sinclar and Spinall.',
+    title: 'Shine TTW - Afro-Sentio Music Artist',
+    description: 'Discover Shine TTW\'s Afro-Sentio music, featuring The Chosen One EP and collaborations with Bob Sinclar and Spinall.',
     url: 'https://shinettw.com',
-    siteName: 'ShineTTW Official',
+    siteName: 'Shine TTW Official',
     images: [
       {
         url: '/music/ep-the-chosen-one.jpg',
         width: 1200,
         height: 630,
-        alt: 'ShineTTW - The Chosen One EP',
+        alt: 'Shine TTW - The Chosen One EP',
       },
     ],
     locale: 'en_US',
@@ -66,8 +66,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ShineTTW - Afro-Sentio Music Artist',
-    description: 'Discover ShineTTW\'s Afro-Sentio music, featuring The Chosen One EP and collaborations with Bob Sinclar and Spinall.',
+    title: 'Shine TTW - Afro-Sentio Music Artist',
+    description: 'Discover Shine TTW\'s Afro-Sentio music, featuring The Chosen One EP and collaborations with Bob Sinclar and Spinall.',
     images: ['/music/ep-the-chosen-one.jpg'],
   },
   robots: {
@@ -125,7 +125,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#C0C0C0" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="ShineTTW" />
+        <meta name="apple-mobile-web-app-title" content="Shine TTW" />
         <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
         <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-192x192.png" />
@@ -179,8 +179,8 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "MusicGroup",
-              "name": "ShineTTW",
-              "alternateName": "Shine TTW",
+              "name": "Shine TTW",
+              "alternateName": "ShineTTW",
               "description": "Afro-Sentio music artist known for The Chosen One EP and collaborations with Bob Sinclar and Spinall. Apple Music Up Next artist.",
               "url": "https://shinettw.com",
               "logo": "https://shinettw.com/music/ep-the-chosen-one.jpg",
@@ -200,11 +200,11 @@ export default function RootLayout({
                 {
                   "@type": "MusicAlbum",
                   "name": "The Chosen One",
-                  "description": "Debut EP by ShineTTW featuring Afro-Sentio sound",
+                  "description": "Debut EP by Shine TTW featuring Afro-Sentio sound",
                   "image": "https://shinettw.com/music/ep-the-chosen-one.jpg",
                   "byArtist": {
                     "@type": "MusicGroup",
-                    "name": "ShineTTW"
+                    "name": "Shine TTW"
                   },
                   "datePublished": "2024",
                   "numTracks": 4
@@ -214,11 +214,11 @@ export default function RootLayout({
                 {
                   "@type": "MusicRecording",
                   "name": "TIME",
-                  "description": "Single by ShineTTW - Afro-Sentio vibes",
+                  "description": "Single by Shine TTW - Afro-Sentio vibes",
                   "image": "https://shinettw.com/music/single-time.jpg",
                   "byArtist": {
                     "@type": "MusicGroup",
-                    "name": "ShineTTW"
+                    "name": "Shine TTW"
                   },
                   "duration": "PT3M30S",
                   "datePublished": "2024"
@@ -230,7 +230,7 @@ export default function RootLayout({
                   "image": "https://shinettw.com/music/shine ttw & bob sinclar (i go).jpeg",
                   "byArtist": {
                     "@type": "MusicGroup",
-                    "name": "ShineTTW"
+                    "name": "Shine TTW"
                   },
                   "duration": "PT3M45S",
                   "datePublished": "2024"
@@ -242,7 +242,7 @@ export default function RootLayout({
                   "image": "https://shinettw.com/music/AUNTY MARY, (Spinall, Shine ttw, Darkoo vibes).jpeg",
                   "byArtist": {
                     "@type": "MusicGroup",
-                    "name": "ShineTTW"
+                    "name": "Shine TTW"
                   },
                   "duration": "PT3M15S",
                   "datePublished": "2024"
@@ -250,7 +250,7 @@ export default function RootLayout({
               ],
               "member": {
                 "@type": "Person",
-                "name": "ShineTTW",
+                "name": "Shine TTW",
                 "jobTitle": "Music Artist",
                 "description": "Afro-Sentio music artist and performer"
               }

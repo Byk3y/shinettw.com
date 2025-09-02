@@ -28,11 +28,11 @@ export default function Events() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Event",
-            "name": "ShineTTW Live Events",
-            "description": "Upcoming and past events featuring ShineTTW",
+            "name": "Shine TTW Live Events",
+            "description": "Upcoming and past events featuring Shine TTW",
             "organizer": {
               "@type": "Organization",
-              "name": "ShineTTW"
+              "name": "Shine TTW"
             },
             "event": events.map(event => ({
               "@type": "Event",
@@ -89,7 +89,7 @@ export default function Events() {
                   <div className="h-48 relative shadow-2xl transform hover:scale-105 transition-all duration-500 rounded-3xl z-10 overflow-hidden">
                     <img 
                       src={event.imageUrl}
-                      alt={`${event.title} - ShineTTW Event in ${event.city}, ${event.location}`}
+                      alt={`${event.title} - Shine TTW Event in ${event.city}, ${event.location}`}
                       className="w-full h-full object-cover"
                       loading="lazy"
                       decoding="async"
@@ -170,7 +170,7 @@ export default function Events() {
                 <div className="h-64 relative shadow-2xl transition-all duration-500 rounded-3xl z-10 overflow-hidden">
                   <img 
                     src={event.imageUrl}
-                    alt={`${event.title} - ShineTTW Event in ${event.city}, ${event.location}`}
+                    alt={`${event.title} - Shine TTW Event in ${event.city}, ${event.location}`}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     loading="lazy"
                     decoding="async"

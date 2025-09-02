@@ -1,4 +1,4 @@
-// Service Worker for ShineTTW PWA
+// Service Worker for Shine TTW PWA
 const CACHE_NAME = 'shinettw-v1'
 const urlsToCache = [
   '/',

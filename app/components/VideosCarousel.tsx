@@ -58,16 +58,16 @@ export default function VideosCarousel() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "VideoObject",
-            "name": "ShineTTW Music Videos",
-            "description": "Official music videos by ShineTTW",
+            "name": "Shine TTW Music Videos",
+            "description": "Official music videos by Shine TTW",
             "publisher": {
               "@type": "Organization",
-              "name": "ShineTTW"
+              "name": "Shine TTW"
             },
             "video": videos.map(video => ({
               "@type": "VideoObject",
               "name": video.title,
-              "description": `${video.title} - Official music video by ShineTTW`,
+              "description": `${video.title} - Official music video by Shine TTW`,
               "thumbnailUrl": video.thumbnail,
               "embedUrl": `https://www.youtube.com/embed/${video.youtubeId}`,
               "url": `https://www.youtube.com/watch?v=${video.youtubeId}`,
@@ -75,7 +75,7 @@ export default function VideosCarousel() {
               "duration": "PT3M30S",
               "creator": {
                 "@type": "Person",
-                "name": "ShineTTW"
+                "name": "Shine TTW"
               }
             }))
           })
@@ -100,7 +100,7 @@ export default function VideosCarousel() {
               <div className="mb-4 relative">
                 <img
                   src={videos[currentVideoIndex].thumbnail}
-                  alt={`${videos[currentVideoIndex].title} - ShineTTW Music Video`}
+                  alt={`${videos[currentVideoIndex].title} - Shine TTW Music Video`}
                   className="w-full h-64 object-cover mx-auto shadow-2xl rounded-lg"
                   loading="lazy"
                   decoding="async"
@@ -162,7 +162,7 @@ export default function VideosCarousel() {
               <div className="relative overflow-hidden rounded-lg shadow-2xl group-hover:shadow-chrome/20 transition-all duration-300">
                 <img
                   src={video.thumbnail}
-                  alt={`${video.title} - ShineTTW Music Video`}
+                  alt={`${video.title} - Shine TTW Music Video`}
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"
                   decoding="async"

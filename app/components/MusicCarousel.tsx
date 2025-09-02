@@ -52,7 +52,7 @@ export default function MusicCarousel() {
               
               <Image
                 src={currentItem.coverArt}
-                alt={`${currentItem.title} - ${currentItem.subtitle} by ShineTTW`}
+                alt={`${currentItem.title} - ${currentItem.subtitle} by Shine TTW`}
                 width={320}
                 height={320}
                 className={`shadow-2xl object-cover transition-opacity duration-300 ${
@@ -100,7 +100,7 @@ export default function MusicCarousel() {
               
               <Image
                 src={currentItem.coverArt}
-                alt={`${currentItem.title} - ${currentItem.subtitle} by ShineTTW`}
+                alt={`${currentItem.title} - ${currentItem.subtitle} by Shine TTW`}
                 width={384}
                 height={384}
                 className={`mx-auto shadow-2xl object-cover transition-opacity duration-300 ${

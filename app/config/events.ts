@@ -25,13 +25,13 @@ export const eventsData: Event[] = [
     status: "completed",
     action: "View Photos",
     actionType: "rsvp",
-    description: "Ctrl + Shine 1.0 - Past Event with ShineTTW",
+    description: "Ctrl + Shine 1.0 - Past Event with Shine TTW",
     imageUrl: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=500&h=400&fit=crop&crop=center&auto=format&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: "FREE"
   },
   {
     id: 2,
-    title: "ShineTTW Live in Abuja",
+    title: "Shine TTW Live in Abuja",
     date: "April 22, 2025",
     city: "Abuja",
     location: "Nigeria", 
@@ -40,13 +40,13 @@ export const eventsData: Event[] = [
     action: "Buy Tickets",
     actionType: "tickets",
     ticketUrl: "https://example.com/tickets",
-    description: "ShineTTW Live in Abuja - Afro-Sentio Experience",
+    description: "Shine TTW Live in Abuja - Afro-Sentio Experience",
     imageUrl: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=500&h=400&fit=crop&crop=center&auto=format&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: "₦5,000"
   },
   {
     id: 3,
-    title: "ShineTTW Live in Port Harcourt",
+    title: "Shine TTW Live in Port Harcourt",
     date: "May 10, 2025",
     city: "Port Harcourt",
     location: "Nigeria",
@@ -54,7 +54,7 @@ export const eventsData: Event[] = [
     status: "upcoming", 
     action: "Remind Me",
     actionType: "reminder",
-    description: "ShineTTW Live in Port Harcourt - Music & Vibes",
+    description: "Shine TTW Live in Port Harcourt - Music & Vibes",
     imageUrl: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500&h=400&fit=crop&crop=center&auto=format&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     price: "₦5,000"
   }

@@ -131,7 +131,7 @@ export async function subscribeToNewsletter(formData: NewsletterFormData): Promi
 
     return {
       success: true,
-      message: '🎉 Welcome to the ShineTTW family! Check your email for confirmation.'
+      message: '🎉 Welcome to the Shine TTW family! Check your email for confirmation.'
     }
 
   } catch (error) {

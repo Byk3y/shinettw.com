@@ -558,7 +558,7 @@ export default function Connect() {
               {/* Privacy Policy */}
               <div className="text-center">
                 <p className="text-white text-xs leading-relaxed">
-                  EMAILS FROM SHINETTW WILL BE SENT BY OR ON BEHALF OF SHINETTW. YOU CAN UNSUBSCRIBE AT ANY TIME.
+                  EMAILS FROM SHINE TTW WILL BE SENT BY OR ON BEHALF OF SHINE TTW. YOU CAN UNSUBSCRIBE AT ANY TIME.
                 </p>
               </div>
 

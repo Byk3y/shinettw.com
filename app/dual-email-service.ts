@@ -106,16 +106,16 @@ export async function sendNewsletterWelcomeEmail(data: NewsletterData): Promise<
     const resend = new Resend(process.env.RESEND_API_KEY)
     
     const { data: emailResult, error } = await resend.emails.send({
-      from: 'ShineTTW <noreply@shinettw.com>',
+      from: 'Shine TTW <noreply@shinettw.com>',
       to: [data.email],
-      subject: '🎵 Welcome to ShineTTW Newsletter!',
+      subject: '🎵 Welcome to Shine TTW Newsletter!',
       html: `
         <!DOCTYPE html>
         <html>
         <head>
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Welcome to ShineTTW Newsletter</title>
+          <title>Welcome to Shine TTW Newsletter</title>
           <style>
             body {
               font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -167,11 +167,11 @@ export async function sendNewsletterWelcomeEmail(data: NewsletterData): Promise<
         <body>
           <div class="container">
             <div class="header">
-              <div class="title">🎉 Welcome to ShineTTW!</div>
+              <div class="title">🎉 Welcome to Shine TTW!</div>
               <div class="subtitle">Hey ${data.firstName} ${data.lastName} 😉</div>
             </div>
             
-            <p>Thanks for joining the ShineTTW family! You're now part of an exclusive community that gets:</p>
+            <p>Thanks for joining the Shine TTW family! You're now part of an exclusive community that gets:</p>
             
             <div class="highlight">
               <strong>🎵 What You'll Get:</strong><br>
@@ -179,7 +179,7 @@ export async function sendNewsletterWelcomeEmail(data: NewsletterData): Promise<
               • Exclusive behind-the-scenes content<br>
               • Early bird access to concert tickets<br>
               • Special offers and merchandise drops<br>
-              • Direct updates from ShineTTW
+              • Direct updates from Shine TTW
             </div>
             
             <p>We're excited to share the Afro-Sentio journey with you. Stay tuned for amazing content coming your way!</p>
@@ -189,9 +189,9 @@ export async function sendNewsletterWelcomeEmail(data: NewsletterData): Promise<
             </p>
             
             <div class="footer">
-              <p><strong>Best regards,</strong><br>The ShineTTW Team</p>
+              <p><strong>Best regards,</strong><br>The Shine TTW Team</p>
               <p style="font-size: 12px; margin-top: 20px;">
-                You're receiving this email because you subscribed to the ShineTTW newsletter.<br>
+                You're receiving this email because you subscribed to the Shine TTW newsletter.<br>
                 You can unsubscribe at any time.
               </p>
             </div>

@@ -72,7 +72,7 @@ export default function CtrlShineClient() {
             Stay Updated
           </h2>
           <p className="text-lg text-gray-300 mb-8">
-            Want to be the first to know about future ShineTTW events? 
+            Want to be the first to know about future Shine TTW events? 
             Join our community and never miss out!
           </p>
           

@@ -53,9 +53,9 @@ export async function sendWelcomeEmail(data: EmailData) {
 
   try {
     const { data: emailResult, error } = await resend.emails.send({
-      from: 'ShineTTW <noreply@shinettw.com>',
+      from: 'Shine TTW <noreply@shinettw.com>',
       to: [data.email],
-                        subject: '🎵 You\'re confirmed for ShineTTW Live Event!',
+                        subject: '🎵 You\'re confirmed for Shine TTW Live Event!',
       html: `
         <!DOCTYPE html>
         <html>
@@ -171,7 +171,7 @@ export async function sendWelcomeEmail(data: EmailData) {
                                     <div class="highlight">
                           <strong>🎵 What to Expect:</strong><br>
                           • Get ready to light up your Friday!<br>
-                          • Unforgettable night with performances from ShineTTW<br>
+                          • Unforgettable night with performances from Shine TTW<br>
                           • Surprise sets from your favorite artists & DJs<br>
                           • High energy & good vibes filled event 🥳
                         </div>
@@ -191,7 +191,7 @@ export async function sendWelcomeEmail(data: EmailData) {
                         </p>
             
             <div class="footer">
-              <p><strong>Best regards,</strong><br>The ShineTTW Team</p>
+              <p><strong>Best regards,</strong><br>The Shine TTW Team</p>
               <p style="font-size: 12px; margin-top: 20px;">
                 You're receiving this email because you RSVP'd for the Ctrl Shine Live Event.<br>
                 Phone: ${data.phone}
