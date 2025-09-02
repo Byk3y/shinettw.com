@@ -9,7 +9,7 @@ interface EmailData {
 }
 
 // Function to create contact in Resend Audiences
-async function createContact(data: EmailData) {
+export async function createContact(data: EmailData) {
   try {
     console.log("📝 Creating contact in Resend Audiences...")
     

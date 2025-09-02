@@ -24,6 +24,7 @@ module.exports = {
           800: '#933514',
           900: '#762e14',
         },
+        chrome: '#C0C0C0', // Chrome/silver metallic color
       },
     },
   },

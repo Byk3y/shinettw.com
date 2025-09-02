@@ -1,17 +1,54 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   html {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    overflow-x: hidden;
   }
   
   body {
-    @apply bg-gray-50 text-gray-900;
+    @apply bg-black text-white;
     /* Prevent horizontal scroll on mobile */
     overflow-x: hidden;
+  }
+  
+  /* Website background image (applies to entire page except hero) */
+  body {
+    background-image: 
+      linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+      url('/images/backgrounds/website-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+  }
+
+  /* Hero section override to ensure video background shows */
+  #hero {
+    background: none !important;
+  }
+  
+  /* Custom typography classes */
+  .font-futuristic {
+    font-family: var(--font-orbitron), system-ui, sans-serif;
+  }
+  
+  .font-anime {
+    font-family: var(--font-exo2), system-ui, sans-serif;
+  }
+  
+  .font-cyberpunk {
+    font-family: var(--font-chakra-petch), system-ui, sans-serif;
+  }
+  
+  .font-display {
+    font-family: var(--font-audiowide), system-ui, sans-serif;
+  }
+  
+  .font-body {
+    font-family: var(--font-inter), system-ui, sans-serif;
   }
 }
 
@@ -26,50 +63,71 @@
 }
 
 @layer utilities {
-  /* Video background optimizations */
-  .video-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-  }
-  
-  /* Ensure video doesn't interfere with text readability */
-  .video-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 0;
-  }
-  
-  /* Text shadow for better readability over video */
+  /* Text shadow for better readability */
   .text-shadow-lg {
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   }
   
-  /* Mobile-specific optimizations */
-  @media (max-width: 768px) {
-    .mobile-video-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-    }
-    
-    .mobile-video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
+  /* Futuristic typography utilities */
+  .text-futuristic {
+    @apply font-futuristic font-black tracking-wider leading-tight;
+  }
+  
+  .text-futuristic-lg {
+    @apply font-futuristic font-black text-4xl md:text-5xl lg:text-6xl tracking-wider leading-tight;
+  }
+  
+  .text-futuristic-xl {
+    @apply font-futuristic font-black text-5xl md:text-6xl lg:text-7xl tracking-wider leading-tight;
+  }
+  
+  /* Anime-styled typography utilities */
+  .text-anime {
+    @apply font-anime font-bold tracking-widest leading-tight;
+  }
+  
+  .text-anime-lg {
+    @apply font-anime font-bold text-3xl md:text-4xl lg:text-5xl tracking-widest leading-tight;
+  }
+  
+  .text-anime-xl {
+    @apply font-anime font-black text-4xl md:text-5xl lg:text-6xl tracking-widest leading-tight;
+  }
+  
+  /* Cyberpunk typography utilities */
+  .text-cyberpunk {
+    @apply font-cyberpunk font-bold tracking-widest leading-tight;
+  }
+  
+  .text-cyberpunk-lg {
+    @apply font-cyberpunk font-bold text-3xl md:text-4xl lg:text-5xl tracking-widest leading-tight;
+  }
+  
+  /* Display font utilities */
+  .text-display {
+    @apply font-display font-normal tracking-widest leading-tight;
+  }
+  
+  .text-display-lg {
+    @apply font-display font-normal text-4xl md:text-5xl lg:text-6xl tracking-widest leading-tight;
+  }
+  
+  /* Body typography utilities */
+  .text-body {
+    @apply font-body font-light leading-relaxed;
+  }
+  
+  .text-body-md {
+    @apply font-body font-normal text-lg leading-relaxed;
+  }
+  
+  .text-body-lg {
+    @apply font-body font-medium text-xl leading-relaxed;
+  }
+  
+  /* Button typography */
+  .text-button {
+    @apply font-body font-semibold tracking-wide;
   }
   
   /* Modal optimizations for mobile */
@@ -82,4 +140,78 @@
   .modal-open {
     overflow: hidden;
   }
+  
+  /* YouTube iframe mobile optimizations */
+  iframe[src*="youtube.com"] {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  /* Ensure iframe is interactive on mobile */
+.video-modal iframe {
+  pointer-events: auto !important;
+  touch-action: manipulation !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar for horizontal scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
+/* Custom React-style shadows for event cards */
+.shadow-3xl {
+  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+/* Enhanced red shadow for image sections */
+.shadow-red-500\/40 {
+  box-shadow: 0 25px 50px -12px rgba(239, 68, 68, 0.4), 0 0 0 1px rgba(239, 68, 68, 0.1);
+}
+
+.shadow-red-500\/60 {
+  box-shadow: 0 25px 50px -12px rgba(239, 68, 68, 0.6), 0 0 0 1px rgba(239, 68, 68, 0.2);
+}
+
+/* Glow effect for cards */
+.event-card-glow {
+  box-shadow: 
+    0 0 20px rgba(239, 68, 68, 0.3),
+    0 0 40px rgba(239, 68, 68, 0.2),
+    0 0 60px rgba(239, 68, 68, 0.1);
+}
+
+/* Prevent horizontal overflow on mobile */
+* {
+  max-width: 100vw;
+}
+
+/* Ensure containers don't cause horizontal scroll */
+.container {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Mobile-specific fixes */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+    width: 100vw;
+  }
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
 } 
