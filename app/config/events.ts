@@ -31,32 +31,31 @@ export const eventsData: Event[] = [
   },
   {
     id: 2,
-    title: "Shine TTW Live in Abuja",
-    date: "April 22, 2025",
-    city: "Abuja",
+    title: "Encore Bi-Monthly Live Performance",
+    date: "October 17, 2025",
+    city: "Private Venue",
     location: "Nigeria", 
-    venue: "The Transcorp Hilton",
+    venue: "Private Venue",
     status: "upcoming",
-    action: "Buy Tickets",
-    actionType: "tickets",
-    ticketUrl: "https://example.com/tickets",
-    description: "Shine TTW Live in Abuja - Afro-Sentio Experience",
+    action: "Invite Only",
+    actionType: "rsvp",
+    description: "Encore Bi-Monthly Live Performance - Exclusive Event",
     imageUrl: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=500&h=400&fit=crop&crop=center&auto=format&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    price: "₦5,000"
+    price: "Invite Only"
   },
   {
     id: 3,
-    title: "Shine TTW Live in Port Harcourt",
-    date: "May 10, 2025",
-    city: "Port Harcourt",
+    title: "Ctrl + Shine 2.0",
+    date: "November 22, 2025",
+    city: "Lagos",
     location: "Nigeria",
-    venue: "The Hotel Presidential",
+    venue: "Ctrl + Shine 2.0",
     status: "upcoming", 
-    action: "Remind Me",
-    actionType: "reminder",
-    description: "Shine TTW Live in Port Harcourt - Music & Vibes",
+    action: "RSVP",
+    actionType: "rsvp",
+    description: "Ctrl + Shine 2.0 - The Sequel Event",
     imageUrl: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500&h=400&fit=crop&crop=center&auto=format&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    price: "₦5,000"
+    price: "FREE"
   }
 ]
 

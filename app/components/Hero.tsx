@@ -8,7 +8,8 @@ import {
   FaApple, 
   FaSpotify, 
   FaFacebook,
-  FaSnapchat
+  FaSnapchat,
+  FaEnvelope
 } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 import { trackSocialClick, trackBookingInquiry } from '../config/analytics'
@@ -16,10 +17,64 @@ import { trackSocialClick, trackBookingInquiry } from '../config/analytics'
 export default function Hero() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
+  const [notifications, setNotifications] = useState([
+    {
+      id: 1,
+      type: 'event',
+      title: 'Upcoming Event',
+      message: 'Encore Bi-Monthly Live Performance - Oct 17, 2025 (Invite Only)',
+      timestamp: new Date(),
+      read: false
+    },
+    {
+      id: 2,
+      type: 'music',
+      title: 'New Release',
+      message: 'AUNTY MARY featured on Spinall\'s Eko Groove album',
+      timestamp: new Date(),
+      read: false
+    }
+  ])
+  const [showNotificationPanel, setShowNotificationPanel] = useState(false)
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
   }
+
+  const toggleNotificationPanel = () => {
+    setShowNotificationPanel(!showNotificationPanel)
+  }
+
+  const markNotificationAsRead = (notificationId: number) => {
+    setNotifications(prev => 
+      prev.map(notification => 
+        notification.id === notificationId 
+          ? { ...notification, read: true }
+          : notification
+      )
+    )
+  }
+
+  const handleNotificationClick = (notification: any) => {
+    // Mark as read first
+    markNotificationAsRead(notification.id)
+    
+    // Handle specific notification actions
+    if (notification.id === 2) { // AUNTY MARY notification
+      window.open('https://SPINALL.lnk.to/EKOGROOVE', '_blank')
+    } else if (notification.id === 1) { // Event notification
+      // Scroll to events section
+      const eventsSection = document.getElementById('events')
+      if (eventsSection) {
+        eventsSection.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+    
+    // Close notification panel
+    setShowNotificationPanel(false)
+  }
+
+  const unreadCount = notifications.filter(n => !n.read).length
 
   useEffect(() => {
     const handleScroll = () => {
@@ -97,6 +152,70 @@ export default function Hero() {
           </svg>
         </button>
       </div>
+
+      {/* Mobile Inbox Icon with Notification */}
+      <div className="md:hidden fixed top-4 left-3 z-50">
+        <button 
+          className="relative text-white hover:text-chrome transition-colors focus:outline-none"
+          onClick={toggleNotificationPanel}
+        >
+          <FaEnvelope className="w-8 h-8" />
+          {/* Notification Badge with Dynamic Count */}
+          {unreadCount > 0 && (
+            <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center">
+              <span className="text-white text-xs font-bold">{unreadCount}</span>
+            </div>
+          )}
+        </button>
+      </div>
+
+      {/* Notification Panel */}
+      {showNotificationPanel && (
+        <div className="md:hidden fixed top-16 left-3 right-3 z-50 bg-black/95 backdrop-blur-sm border border-gray-700 rounded-lg shadow-2xl max-h-80 overflow-y-auto">
+          <div className="p-4">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-white font-bold text-lg">Notifications</h3>
+              <button 
+                onClick={toggleNotificationPanel}
+                className="text-gray-400 hover:text-white"
+              >
+                ✕
+              </button>
+            </div>
+            
+            <div className="space-y-3">
+              {notifications.map((notification) => (
+                <div 
+                  key={notification.id}
+                  className={`p-3 rounded-lg border cursor-pointer transition-colors ${
+                    notification.read 
+                      ? 'bg-gray-800/50 border-gray-700' 
+                      : 'bg-red-900/20 border-red-700'
+                  }`}
+                  onClick={() => handleNotificationClick(notification)}
+                >
+                  <div className="flex justify-between items-start">
+                    <div className="flex-1">
+                      <h4 className="text-white font-semibold text-sm">
+                        {notification.title}
+                      </h4>
+                      <p className="text-gray-300 text-xs mt-1">
+                        {notification.message}
+                      </p>
+                      <p className="text-gray-500 text-xs mt-2">
+                        {notification.timestamp.toLocaleDateString()}
+                      </p>
+                    </div>
+                    {!notification.read && (
+                      <div className="w-2 h-2 bg-red-500 rounded-full ml-2 mt-1"></div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Navbar/Buttons Overlay - Desktop Only */}
       <div className="hidden md:block fixed top-0 left-0 right-0 z-20 pt-4 px-6">
