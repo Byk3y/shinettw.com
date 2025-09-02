@@ -117,7 +117,7 @@ export default function RootLayout({
         <link
           rel="preload"
           as="image"
-          href="/music/ep-the-chosen-one.jpg"
+          href="/music/single-time.jpg"
         />
         
         {/* PWA Meta Tags */}
