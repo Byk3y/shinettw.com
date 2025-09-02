@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { FaPlay } from 'react-icons/fa'
 import { videosData } from '../config/videos'
 import { trackVideoPlay } from '../config/analytics'
@@ -8,6 +8,9 @@ import { trackVideoPlay } from '../config/analytics'
 export default function VideosCarousel() {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null)
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
+  const [touchStart, setTouchStart] = useState<number | null>(null)
+  const [touchEnd, setTouchEnd] = useState<number | null>(null)
+  const carouselRef = useRef<HTMLDivElement>(null)
   
   const videos = videosData
 
@@ -29,6 +32,32 @@ export default function VideosCarousel() {
 
   const closeVideo = () => {
     setSelectedVideo(null)
+  }
+
+  // Swipe functionality
+  const minSwipeDistance = 50
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null)
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+    
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > minSwipeDistance
+    const isRightSwipe = distance < -minSwipeDistance
+
+    if (isLeftSwipe) {
+      nextVideo()
+    } else if (isRightSwipe) {
+      prevVideo()
+    }
   }
 
   // Prevent iframe from opening new windows and ensure mobile compatibility
@@ -96,7 +125,13 @@ export default function VideosCarousel() {
         <div className="md:hidden">
           {/* Mobile Carousel */}
           <div className="relative max-w-4xl mx-auto">
-            <div className="text-center relative">
+            <div 
+              className="text-center relative"
+              ref={carouselRef}
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+            >
               <div className="mb-4 relative">
                 <img
                   src={videos[currentVideoIndex].thumbnail}

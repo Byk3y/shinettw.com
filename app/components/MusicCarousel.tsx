@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { musicData } from '../config/music'
 import { trackMusicPlay } from '../config/analytics'
@@ -9,6 +9,9 @@ export default function MusicCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [imageLoading, setImageLoading] = useState(true)
+  const [touchStart, setTouchStart] = useState<number | null>(null)
+  const [touchEnd, setTouchEnd] = useState<number | null>(null)
+  const carouselRef = useRef<HTMLDivElement>(null)
 
   const nextSlide = () => {
     setIsTransitioning(true)
@@ -29,6 +32,32 @@ export default function MusicCarousel() {
   }
 
   const currentItem = musicData[currentSlide]
+
+  // Swipe functionality
+  const minSwipeDistance = 50
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null)
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+    
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > minSwipeDistance
+    const isRightSwipe = distance < -minSwipeDistance
+
+    if (isLeftSwipe) {
+      nextSlide()
+    } else if (isRightSwipe) {
+      prevSlide()
+    }
+  }
 
   return (
     <section id="music" className="py-8 md:py-16 pb-0 md:pb-16 bg-transparent">
@@ -90,7 +119,13 @@ export default function MusicCarousel() {
           </div>
 
           {/* Mobile Layout - Centered */}
-          <div className="md:hidden text-center relative">
+          <div 
+            className="md:hidden text-center relative"
+            ref={carouselRef}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+          >
             {/* Cover Art */}
             <div className="mb-3 relative">
               {/* Loading Skeleton */}
