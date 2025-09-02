@@ -1,15 +1,18 @@
 'use client'
 
 import React, { useState } from 'react'
+import Image from 'next/image'
 import { musicData } from '../config/music'
 import { trackMusicPlay } from '../config/analytics'
 
 export default function MusicCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const [imageLoading, setImageLoading] = useState(true)
 
   const nextSlide = () => {
     setIsTransitioning(true)
+    setImageLoading(true)
     setTimeout(() => {
       setCurrentSlide((prev) => (prev + 1) % musicData.length)
       setIsTransitioning(false)
@@ -18,6 +21,7 @@ export default function MusicCarousel() {
 
   const prevSlide = () => {
     setIsTransitioning(true)
+    setImageLoading(true)
     setTimeout(() => {
       setCurrentSlide((prev) => (prev - 1 + musicData.length) % musicData.length)
       setIsTransitioning(false)
@@ -40,15 +44,24 @@ export default function MusicCarousel() {
           {/* Desktop Layout - Side by Side */}
           <div className="hidden md:flex items-center gap-32">
             {/* Left Side - Cover Art */}
-            <div className="flex-shrink-0 ml-16">
-              <img
+            <div className="flex-shrink-0 ml-16 relative">
+              {/* Loading Skeleton */}
+              {imageLoading && (
+                <div className="absolute inset-0 w-80 h-80 bg-gray-800 animate-pulse rounded-lg shadow-2xl"></div>
+              )}
+              
+              <Image
                 src={currentItem.coverArt}
                 alt={`${currentItem.title} - ${currentItem.subtitle} by ShineTTW`}
-                className={`w-80 h-80 shadow-2xl object-cover transition-opacity duration-150 ${
-                  isTransitioning ? 'opacity-50' : 'opacity-100'
-                }`}
-                loading="lazy"
-                decoding="async"
+                width={320}
+                height={320}
+                className={`shadow-2xl object-cover transition-opacity duration-300 ${
+                  imageLoading ? 'opacity-0' : 'opacity-100'
+                } ${isTransitioning ? 'opacity-50' : ''}`}
+                priority={currentSlide === 0}
+                quality={90}
+                onLoad={() => setImageLoading(false)}
+                onError={() => setImageLoading(false)}
               />
             </div>
             
@@ -79,15 +92,24 @@ export default function MusicCarousel() {
           {/* Mobile Layout - Centered */}
           <div className="md:hidden text-center relative">
             {/* Cover Art */}
-            <div className="mb-3">
-              <img
+            <div className="mb-3 relative">
+              {/* Loading Skeleton */}
+              {imageLoading && (
+                <div className="absolute inset-0 w-96 h-96 bg-gray-800 animate-pulse rounded-lg shadow-2xl mx-auto"></div>
+              )}
+              
+              <Image
                 src={currentItem.coverArt}
                 alt={`${currentItem.title} - ${currentItem.subtitle} by ShineTTW`}
-                className={`w-96 h-96 mx-auto shadow-2xl object-cover transition-opacity duration-150 ${
-                  isTransitioning ? 'opacity-50' : 'opacity-100'
-                }`}
-                loading="lazy"
-                decoding="async"
+                width={384}
+                height={384}
+                className={`mx-auto shadow-2xl object-cover transition-opacity duration-300 ${
+                  imageLoading ? 'opacity-0' : 'opacity-100'
+                } ${isTransitioning ? 'opacity-50' : ''}`}
+                priority={currentSlide === 0}
+                quality={90}
+                onLoad={() => setImageLoading(false)}
+                onError={() => setImageLoading(false)}
               />
             </div>
             

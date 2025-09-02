@@ -113,6 +113,13 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         
+        {/* Preload critical music cover art */}
+        <link
+          rel="preload"
+          as="image"
+          href="/music/ep-the-chosen-one.jpg"
+        />
+        
         {/* PWA Meta Tags */}
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#C0C0C0" />

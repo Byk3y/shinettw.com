@@ -365,7 +365,7 @@ export default function Hero() {
       {/* Bouncing Booking Button - Mobile: Bottom Right of Screen */}
       <div className="md:hidden fixed bottom-4 right-4 z-30">
         <a
-          href="mailto:booking@shinettw.com?subject=Booking Inquiry"
+          href="mailto:shinettwworks@gmail.com?subject=Booking Inquiry"
           className="group relative inline-block"
           onClick={() => trackBookingInquiry()}
         >
@@ -388,7 +388,7 @@ export default function Hero() {
       {/* Desktop Booking Button - Bottom Right */}
       <div className="hidden md:block absolute bottom-6 right-6 z-30">
         <a
-          href="mailto:booking@shinettw.com?subject=Booking Inquiry"
+          href="mailto:shinettwworks@gmail.com?subject=Booking Inquiry"
           className="group relative inline-block"
           onClick={() => trackBookingInquiry()}
         >
