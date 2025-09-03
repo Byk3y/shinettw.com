@@ -120,6 +120,11 @@ export default function RootLayout({
           href="/music/single-time.jpg"
         />
         
+        {/* Favicon */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icons/icon-192x192.png" type="image/png" sizes="192x192" />
+        <link rel="icon" href="/icons/icon-512x512.png" type="image/png" sizes="512x512" />
+        
         {/* PWA Meta Tags */}
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#C0C0C0" />
