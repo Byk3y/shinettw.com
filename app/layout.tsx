@@ -44,13 +44,13 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Shine TTW - Afro-Sentio Music Artist | Official Website',
-  description: 'Discover Shine TTW\'s Afro-Sentio music, featuring The Chosen One EP and collaborations with Bob Sinclar and Spinall. Stream TIME, I Go, and AUNTY MARY. Official artist website with music, videos, events, and latest updates.',
-  keywords: 'Shine TTW, Afro-Sentio, music artist, The Chosen One EP, TIME, I Go, AUNTY MARY, Bob Sinclar, Spinall, Nigerian music, Afrobeat, music streaming',
+  title: 'Shine TTW - Afro Beats Artist | Nigerian Music | Official Website',
+  description: 'Discover Shine TTW, rising Afro Beats artist from Nigeria. Stream The Chosen One EP, TIME, I Go, and AUNTY MARY. Collaborations with Bob Sinclar and Spinall. Official artist website with music, videos, events, and latest updates.',
+  keywords: 'Shine TTW, afro beats artist, Nigerian music, afro beats, The Chosen One EP, TIME, I Go, AUNTY MARY, Bob Sinclar, Spinall, afro beats music, Nigerian artist, afro beats streaming, afro beats playlist',
   authors: [{ name: 'Shine TTW' }],
   openGraph: {
-    title: 'Shine TTW - Afro-Sentio Music Artist',
-    description: 'Discover Shine TTW\'s Afro-Sentio music, featuring The Chosen One EP and collaborations with Bob Sinclar and Spinall.',
+    title: 'Shine TTW - Afro Beats Artist | Nigerian Music',
+    description: 'Discover Shine TTW, rising Afro Beats artist from Nigeria. Stream The Chosen One EP and collaborations with Bob Sinclar and Spinall.',
     url: 'https://shinettw.com',
     siteName: 'Shine TTW Official',
     images: [
@@ -66,8 +66,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Shine TTW - Afro-Sentio Music Artist',
-    description: 'Discover Shine TTW\'s Afro-Sentio music, featuring The Chosen One EP and collaborations with Bob Sinclar and Spinall.',
+    title: 'Shine TTW - Afro Beats Artist | Nigerian Music',
+    description: 'Discover Shine TTW, rising Afro Beats artist from Nigeria. Stream The Chosen One EP and collaborations with Bob Sinclar and Spinall.',
     images: ['/music/ep-the-chosen-one.jpg'],
   },
   robots: {
@@ -181,11 +181,11 @@ export default function RootLayout({
               "@type": "MusicGroup",
               "name": "Shine TTW",
               "alternateName": "ShineTTW",
-              "description": "Afro-Sentio music artist known for The Chosen One EP and collaborations with Bob Sinclar and Spinall. Apple Music Up Next artist.",
+              "description": "Afro Beats artist from Nigeria known for The Chosen One EP and collaborations with Bob Sinclar and Spinall. Apple Music Up Next artist.",
               "url": "https://shinettw.com",
               "logo": "https://shinettw.com/music/ep-the-chosen-one.jpg",
               "image": "https://shinettw.com/music/ep-the-chosen-one.jpg",
-              "genre": ["Afro-Sentio", "Afrobeat", "Nigerian Music", "Afro-Pop"],
+              "genre": ["Afro Beats", "Afrobeat", "Nigerian Music", "Afro-Pop", "Afro-Sentio"],
               "foundingDate": "2024",
               "award": "Apple Music Up Next Recognition",
               "sameAs": [
@@ -200,7 +200,7 @@ export default function RootLayout({
                 {
                   "@type": "MusicAlbum",
                   "name": "The Chosen One",
-                  "description": "Debut EP by Shine TTW featuring Afro-Sentio sound",
+                  "description": "Debut EP by Shine TTW featuring Afro Beats sound",
                   "image": "https://shinettw.com/music/ep-the-chosen-one.jpg",
                   "byArtist": {
                     "@type": "MusicGroup",
@@ -214,7 +214,7 @@ export default function RootLayout({
                 {
                   "@type": "MusicRecording",
                   "name": "TIME",
-                  "description": "Single by Shine TTW - Afro-Sentio vibes",
+                  "description": "Single by Shine TTW - Afro Beats vibes",
                   "image": "https://shinettw.com/music/single-time.jpg",
                   "byArtist": {
                     "@type": "MusicGroup",
@@ -252,7 +252,7 @@ export default function RootLayout({
                 "@type": "Person",
                 "name": "Shine TTW",
                 "jobTitle": "Music Artist",
-                "description": "Afro-Sentio music artist and performer"
+                "description": "Afro Beats music artist and performer"
               }
             })
           }}

@@ -102,7 +102,7 @@ export default function Hero() {
   return (
     <section id="hero" className="relative h-64 md:h-screen overflow-hidden">
       {/* SEO H1 Heading - Visually Hidden */}
-      <h1 className="sr-only">Shine TTW - Afro-Sentio Music Artist</h1>
+      <h1 className="sr-only">Shine TTW - Afro Beats Artist | Nigerian Music</h1>
       {/* Video Background - Scoped to Hero section only (Desktop Only) */}
       <div className="hidden md:block absolute inset-0 w-full h-full">
         <video
