@@ -396,6 +396,16 @@ export default function Hero() {
                 <FaSnapchat className="w-6 h-6" />
               </a>
             </div>
+            
+            {/* Website Icon */}
+            <div className="mt-8 flex justify-center">
+              <img 
+                src="/icons/shine website icon.png" 
+                alt="Shine TTW Logo" 
+                className="w-32 h-32 object-contain hover:scale-105 transition-transform duration-300 animate-spin"
+                style={{ animationDuration: '3s' }}
+              />
+            </div>
           </div>
         </div>
       </div>
