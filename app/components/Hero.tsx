@@ -361,7 +361,7 @@ export default function Hero() {
               </a>
               
               <a
-                href="https://www.facebook.com/shinettw"
+                href="https://www.facebook.com/shinetotheworlds"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-chrome transition-colors"
