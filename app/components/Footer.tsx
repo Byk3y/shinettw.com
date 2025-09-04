@@ -80,7 +80,7 @@ export default function Footer() {
             </a>
             
             <a
-              href="https://www.facebook.com/shinettw"
+              href="https://www.facebook.com/shinetotheworlds"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-chrome transition-colors"
