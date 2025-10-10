@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       authors: [post.frontmatter.author],
       images: [
         {
-          url: post.frontmatter.coverImage,
+          url: post.frontmatter.featuredImage,
           width: 1200,
           height: 630,
           alt: post.frontmatter.title,
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       title: `${post.frontmatter.title} - Shine TTW Blog`,
       description: post.frontmatter.excerpt,
       creator: '@shinettw_',
-      images: [post.frontmatter.coverImage],
+      images: [post.frontmatter.featuredImage],
     },
     alternates: {
       canonical: `https://shinettw.com/blog/${post.slug}`,
@@ -116,8 +116,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
             {/* Featured Image */}
             <div className="relative h-64 md:h-96 mb-8 rounded-lg overflow-hidden">
-              <Image
-                src={post.frontmatter.coverImage}
+        <Image
+          src={post.frontmatter.featuredImage}
                 alt={post.frontmatter.title}
                 fill
                 className="object-cover"

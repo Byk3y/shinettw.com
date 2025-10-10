@@ -18,8 +18,8 @@ export default function BlogCard({ post, className = '' }: BlogCardProps) {
       <article className="bg-gray-900/50 backdrop-blur-sm rounded-lg border border-gray-700 hover:border-chrome/50 transition-all duration-200 hover:shadow-lg hover:shadow-chrome/20 overflow-hidden">
         {/* Dark Image Container */}
         <div className="relative h-48 overflow-hidden">
-          <Image
-            src={post.frontmatter.coverImage}
+              <Image
+                src={post.frontmatter.featuredImage}
             alt={post.frontmatter.title}
             fill
             style={{ objectFit: 'cover' }}

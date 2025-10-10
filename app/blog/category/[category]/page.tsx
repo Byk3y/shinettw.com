@@ -2,7 +2,6 @@ import React from 'react'
 import { Metadata } from 'next'
 import Link from 'next/link'
 import BlogCard from '../../../components/BlogCard'
-import BlogCategoryFilter from '../../../components/BlogCategoryFilter'
 import { getPostsByCategoryClient } from '../../../lib/blog-client'
 import { getCategoryBySlug, blogConfig } from '../../../config/blog'
 import Navigation from '../../../components/Navigation'
@@ -114,18 +113,6 @@ export default function CategoryPage({ params }: CategoryPageProps) {
               </p>
             </div>
 
-            {/* Category Filter */}
-            <BlogCategoryFilter 
-              activeCategory={params.category} 
-              onCategoryChange={(newCategory) => {
-                if (newCategory === 'all') {
-                  window.location.href = '/blog'
-                } else {
-                  window.location.href = `/blog/category/${newCategory}`
-                }
-              }}
-              className="mb-0"
-            />
           </div>
         </section>
 

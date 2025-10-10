@@ -17,8 +17,8 @@ export default function NewBlogCard({ post, className = '' }: NewBlogCardProps) 
     <Link href={`/blog/${post.slug}`} className={`block group ${className}`}>
       <article className="bg-gray-900/50 backdrop-blur-sm rounded-lg overflow-hidden shadow-md hover:shadow-xl hover:shadow-chrome/20 transition-all duration-300 ease-in-out border border-gray-700 hover:border-chrome/50">
         <div className="relative h-48 overflow-hidden">
-          <Image
-            src={post.frontmatter.coverImage}
+              <Image
+                src={post.frontmatter.featuredImage}
             alt={post.frontmatter.title}
             fill
             style={{ objectFit: 'cover' }}

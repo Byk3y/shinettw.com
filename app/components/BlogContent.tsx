@@ -37,8 +37,8 @@ export default function BlogContent() {
       {/* Hero Section */}
       {featuredPost && !searchTerm && (
         <section className="relative h-[50vh] w-full flex items-center justify-center text-white mb-16">
-          <Image
-            src={featuredPost.frontmatter.coverImage}
+              <Image
+                src={featuredPost.frontmatter.featuredImage}
             alt={featuredPost.frontmatter.title}
             fill
             style={{ objectFit: 'cover' }}

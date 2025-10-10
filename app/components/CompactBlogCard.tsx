@@ -19,8 +19,8 @@ export default function CompactBlogCard({ post, className = '' }: CompactBlogCar
         <div className="flex">
           {/* Image - Left Side */}
           <div className="relative w-24 h-24 flex-shrink-0 overflow-hidden">
-            <Image
-              src={post.frontmatter.coverImage}
+                <Image
+                  src={post.frontmatter.featuredImage}
               alt={post.frontmatter.title}
               fill
               style={{ objectFit: 'cover' }}
