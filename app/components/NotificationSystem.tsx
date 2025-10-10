@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { notificationsData, type Notification } from '../config/notifications'
 
 interface NotificationSystemProps {
@@ -10,10 +10,32 @@ interface NotificationSystemProps {
 export default function NotificationSystem({ className = '' }: NotificationSystemProps) {
   const [notifications, setNotifications] = useState<Notification[]>(notificationsData)
   const [showNotificationPanel, setShowNotificationPanel] = useState(false)
+  const notificationPanelRef = useRef<HTMLDivElement>(null)
 
   const toggleNotificationPanel = () => {
     setShowNotificationPanel(!showNotificationPanel)
   }
+
+  // Handle click outside to close notification panel
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        showNotificationPanel && 
+        notificationPanelRef.current && 
+        !notificationPanelRef.current.contains(event.target as Node)
+      ) {
+        setShowNotificationPanel(false)
+      }
+    }
+
+    if (showNotificationPanel) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [showNotificationPanel])
 
   const markNotificationAsRead = (notificationId: number) => {
     setNotifications(prev => 
@@ -69,7 +91,15 @@ export default function NotificationSystem({ className = '' }: NotificationSyste
 
       {/* Notification Panel */}
       {showNotificationPanel && (
-        <div className="md:hidden fixed top-16 left-3 right-3 z-50 bg-black/95 backdrop-blur-sm border border-gray-700 rounded-lg shadow-2xl max-h-80 overflow-y-auto">
+        <>
+          {/* Backdrop */}
+          <div className="md:hidden fixed inset-0 z-40 bg-black/20 backdrop-blur-sm" />
+          
+          {/* Notification Panel */}
+          <div 
+            ref={notificationPanelRef}
+            className="md:hidden fixed top-16 left-3 right-3 z-50 bg-black/95 backdrop-blur-sm border border-gray-700 rounded-lg shadow-2xl max-h-80 overflow-y-auto"
+          >
           <div className="p-4">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-white font-bold text-lg">Notifications</h3>
@@ -112,7 +142,8 @@ export default function NotificationSystem({ className = '' }: NotificationSyste
               ))}
             </div>
           </div>
-        </div>
+          </div>
+        </>
       )}
     </>
   )
