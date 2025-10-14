@@ -2,7 +2,7 @@
  * LOCO Landing Page - Single Release Landing
  *
  * VIDEO INTEGRATION:
- * - YouTube Shorts embed: https://youtube.com/shorts/kLxvs_iTAmc ✅ (implemented)
+ * - YouTube embed: https://youtu.be/NWvscGKWYRk ✅ (implemented)
  * - Cover art: /public/music/loco-cover.jpg (available for metadata)
  *
  * ENVIRONMENT SETUP:
@@ -16,8 +16,8 @@
  * - Supports: utm_source, utm_medium, utm_campaign, utm_term, utm_content
  *
  * YOUTUBE INTEGRATION:
- * - Video ID: kLxvs_iTAmc
- * - YouTube Shorts format with native controls
+ * - Video ID: NWvscGKWYRk
+ * - YouTube embed with native controls
  * - Responsive embed with aspect-square ratio
  * - NEXT_PUBLIC_ENCORE_URL is set to https://shinettw.ffm.to/loco
  */
@@ -67,7 +67,7 @@ export default function LocoPage() {
                   <div className="relative w-full max-w-sm md:max-w-xl">
                     <div className="relative group">
                       <iframe
-                        src="https://www.youtube.com/embed/kLxvs_iTAmc?autoplay=0&controls=1&modestbranding=1&rel=0&showinfo=0"
+                        src="https://www.youtube.com/embed/NWvscGKWYRk?autoplay=0&controls=1&modestbranding=1&rel=0&showinfo=0"
                         title="LOCO Preview - Shine TTW"
                         className="w-full aspect-square rounded-2xl shadow-2xl border border-[#d4af37]/20 hover:shadow-[0_25px_50px_rgba(212,175,55,0.2)] transition-all duration-500 hover:scale-105"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
