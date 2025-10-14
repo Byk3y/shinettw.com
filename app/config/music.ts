@@ -9,9 +9,23 @@ export interface MusicItem {
     spotify: string;
     youtube: string;
   };
+  isPresave?: boolean; // New field to indicate if this is a presave track
 }
 
 export const musicData: MusicItem[] = [
+  {
+    id: 0,
+    title: "LOCO",
+    subtitle: "Single",
+    coverArt: "/music/loco-cover.jpg",
+            streamingLinks: {
+              primary: process.env.NEXT_PUBLIC_ENCORE_URL || "https://shinettw.ffm.to/loco",
+      appleMusic: "https://music.apple.com/us/artist/shinettw/1649199436",
+      spotify: "https://open.spotify.com/artist/shinettw",
+      youtube: "https://www.youtube.com/@shinettw"
+    },
+    isPresave: true
+  },
   {
     id: 1,
     title: "TIME",

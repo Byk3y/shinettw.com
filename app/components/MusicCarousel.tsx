@@ -113,7 +113,7 @@ export default function MusicCarousel() {
                   window.open(listenUrl, '_blank');
                 }}
               >
-                LISTEN
+                {currentItem.isPresave ? 'PRESAVE' : 'LISTEN'}
               </button>
             </div>
           </div>
@@ -200,7 +200,7 @@ export default function MusicCarousel() {
                 window.open(listenUrl, '_blank');
               }}
             >
-              LISTEN
+              {currentItem.isPresave ? 'PRESAVE' : 'LISTEN'}
             </button>
             
             {/* Watch Video Link for TIME track */}

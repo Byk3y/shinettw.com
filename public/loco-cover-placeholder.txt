@@ -1,0 +1,31 @@
+# LOCO Cover Art Placeholder
+
+## Instructions for Adding Your Cover Image
+
+1. **Prepare your cover art:**
+   - Format: JPG or PNG
+   - Recommended size: 1200x1200px (square)
+   - File size: Under 2MB for fast loading
+
+2. **Replace this placeholder:**
+   - Save your cover image as `loco-cover.jpg`
+   - Place it in: `/public/loco-cover.jpg`
+   - This will replace the placeholder and show on the landing page
+
+3. **SEO Optimization:**
+   - The image will be used for Open Graph and Twitter Card previews
+   - Make sure it looks good when shared on social media
+   - Consider adding your artist name or song title in the image
+
+## Current Status
+- ✅ Landing page created at `/loco`
+- ✅ Audio player ready (needs `/public/audio/loco-preview.mp3`)
+- ✅ UTM parameter tracking implemented
+- ✅ Environment variable configured
+- ⏳ **Waiting for cover image** - Replace `/public/loco-cover.jpg`
+
+## Next Steps
+1. Add your cover image to `/public/loco-cover.jpg`
+2. Add your audio snippet to `/public/audio/loco-preview.mp3`
+3. Set `NEXT_PUBLIC_ENCORE_URL` in your `.env.local` file
+4. Test the page at `http://localhost:3000/loco`
