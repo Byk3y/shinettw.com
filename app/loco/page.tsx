@@ -55,6 +55,7 @@ export default function LocoPage() {
         onClose={toggleMobileMenu}
         activeSection=""
         isBlogPage={false}
+        isLocoPage={true}
       />
       {/* Logo */}
       <div className="mb-1 md:mb-8 -mt-8 md:mt-0">

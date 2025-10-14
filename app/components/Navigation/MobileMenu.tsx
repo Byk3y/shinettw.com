@@ -8,9 +8,10 @@ interface MobileMenuProps {
   onClose: () => void
   activeSection: string
   isBlogPage: boolean
+  isLocoPage?: boolean
 }
 
-export default function MobileMenu({ isOpen, onClose, activeSection, isBlogPage }: MobileMenuProps) {
+export default function MobileMenu({ isOpen, onClose, activeSection, isBlogPage, isLocoPage = false }: MobileMenuProps) {
   return (
     <>
       {/* Mobile Hamburger Menu Icon */}
@@ -54,28 +55,28 @@ export default function MobileMenu({ isOpen, onClose, activeSection, isBlogPage 
           {/* Navigation Links */}
           <nav className="px-8 py-12 space-y-8">
             <a 
-              href="#music" 
+              href={isLocoPage ? "/#music" : "#music"} 
               onClick={onClose}
               className="block text-white text-2xl font-anime font-bold tracking-widest hover:text-chrome transition-colors"
             >
               MUSIC
             </a>
             <a 
-              href="#videos" 
+              href={isLocoPage ? "/#videos" : "#videos"} 
               onClick={onClose}
               className="block text-white text-2xl font-anime font-bold tracking-widest hover:text-chrome transition-colors"
             >
               VIDEOS
             </a>
             <a 
-              href="#events" 
+              href={isLocoPage ? "/#events" : "#events"} 
               onClick={onClose}
               className="block text-white text-2xl font-anime font-bold tracking-widest hover:text-chrome transition-colors"
             >
               EVENTS
             </a>
             <a 
-              href="#connect" 
+              href={isLocoPage ? "/#connect" : "#connect"} 
               onClick={onClose}
               className="block text-white text-2xl font-anime font-bold tracking-widest hover:text-chrome transition-colors"
             >
