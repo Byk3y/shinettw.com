@@ -24,7 +24,7 @@
 
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import CTAButton from './CTAButton'
 import MobileMenu from '../components/Navigation/MobileMenu'
 import { mobileSocialLinks } from '../config/social'
@@ -36,8 +36,19 @@ export default function LocoPage() {
     setIsMobileMenuOpen(!isMobileMenuOpen)
   }
 
+  // Control body overflow to prevent scrolling on LOCO page
+  useEffect(() => {
+    // Disable scrolling when component mounts
+    document.body.style.overflow = 'hidden'
+    
+    // Re-enable scrolling when component unmounts
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [])
+
   return (
-    <div className="h-screen bg-[#0b0b0b] text-[#f7f3e9] flex flex-col items-center justify-center px-4 py-4 md:py-8 animate-in fade-in duration-1000 overflow-hidden">
+    <div className="h-dvh bg-[#0b0b0b] text-[#f7f3e9] flex flex-col items-center justify-center px-4 py-4 md:py-8 animate-in fade-in duration-1000 overflow-hidden">
       {/* Mobile Menu Component */}
       <MobileMenu 
         isOpen={isMobileMenuOpen}
