@@ -9,6 +9,7 @@ export interface Event {
   action: string
   actionType: 'rsvp' | 'tickets' | 'reminder' | 'sold-out'
   ticketUrl?: string
+  playlistUrl?: string
   description?: string
   imageUrl: string
   price?: string
@@ -40,6 +41,7 @@ export const eventsData: Event[] = [
     action: "RSVP",
     actionType: "rsvp",
     ticketUrl: "https://lagosencore.com",
+    playlistUrl: "/playlist/lagos-encore",
     description: "Live performance featuring Mavo & Masktunes. Doors open at 6:30 PM, show starts at 7:00 PM.",
     imageUrl: "/images/events/event-poster.jpg",
     price: "FREE"
