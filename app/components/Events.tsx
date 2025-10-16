@@ -1,10 +1,10 @@
 'use client'
 
 import React from 'react'
-import { eventsData, type Event } from '../config/events'
+import { getEventsWithUpdatedStatuses, type Event } from '../config/events'
 
 export default function Events() {
-  const events = eventsData
+  const events = getEventsWithUpdatedStatuses()
 
   const getActionButtonStyle = (actionType: string) => {
     switch (actionType) {

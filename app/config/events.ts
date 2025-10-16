@@ -31,17 +31,18 @@ export const eventsData: Event[] = [
   },
   {
     id: 2,
-    title: "Encore Bi-Monthly Live Performance",
+    title: "LagosEncore",
     date: "October 17, 2025",
-    city: "Private Venue",
-    location: "Nigeria", 
-    venue: "Private Venue",
+    city: "Lagos",
+    location: "TRIB3 Lagos, Victoria Island", 
+    venue: "LagosEncore",
     status: "upcoming",
-    action: "Invite Only",
+    action: "RSVP",
     actionType: "rsvp",
-    description: "Encore Bi-Monthly Live Performance - Exclusive Event",
+    ticketUrl: "https://lagosencore.com",
+    description: "Live performance featuring Mavo & Masktunes. Doors open at 6:30 PM, show starts at 7:00 PM.",
     imageUrl: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=500&h=400&fit=crop&crop=center&auto=format&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    price: "Invite Only"
+    price: "FREE"
   },
   {
     id: 3,
@@ -72,4 +73,27 @@ export const getEventsByLocation = (location: string) => {
     event.city.toLowerCase().includes(location.toLowerCase()) ||
     event.location.toLowerCase().includes(location.toLowerCase())
   )
+}
+
+// Function to automatically update event status based on current date
+export const getEventWithUpdatedStatus = (event: Event): Event => {
+  const eventDate = new Date(event.date)
+  const currentDate = new Date()
+  
+  // If event date has passed, update status to completed
+  if (eventDate < currentDate && event.status === 'upcoming') {
+    return {
+      ...event,
+      status: 'completed',
+      action: 'View Photos',
+      actionType: 'rsvp'
+    }
+  }
+  
+  return event
+}
+
+// Function to get all events with automatically updated statuses
+export const getEventsWithUpdatedStatuses = (): Event[] => {
+  return eventsData.map(getEventWithUpdatedStatus)
 }

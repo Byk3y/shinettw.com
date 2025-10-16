@@ -53,11 +53,8 @@ export default function NotificationSystem({ className = '' }: NotificationSyste
     
     // Handle specific notification actions
     if (notification.id === 1) { // Event notification
-      // Scroll to events section
-      const eventsSection = document.getElementById('events')
-      if (eventsSection) {
-        eventsSection.scrollIntoView({ behavior: 'smooth' })
-      }
+      // Open LagosEncore website
+      window.open('https://lagosencore.com/', '_blank')
     } else if (notification.id === 3) { // Loco Instagram tease notification
       window.open('https://www.instagram.com/reel/DPMSPa3jU2h/?igsh=MWp0MTZib3NtaHJzdw==', '_blank')
     }

@@ -20,7 +20,7 @@ export const notificationsData: Notification[] = [
     id: 1,
     type: 'event',
     title: 'Upcoming Event',
-    message: 'Encore Bi-Monthly Live Performance - Oct 17, 2025 (Invite Only)',
+    message: 'LagosEncore - Shine TTW Live in Lagos featuring Mavo & Masktunes - Oct 17, 2025',
     timestamp: new Date(),
     read: false
   }
