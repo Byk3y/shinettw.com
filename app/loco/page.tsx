@@ -60,7 +60,7 @@ export default function LocoPage() {
       {/* Logo */}
       <div className="mb-1 md:mb-8 -mt-8 md:mt-0">
         <img
-          src="/icons/shine website icon.png"
+          src="/icons/brand-shine-website.png"
           alt="Shine TTW"
           className="w-24 h-24 md:w-32 md:h-32 object-contain opacity-80 hover:opacity-100 transition-opacity duration-300 animate-spin"
           style={{ animationDuration: '8s' }}

@@ -53,7 +53,7 @@ export const musicData: MusicItem[] = [
     id: 3,
     title: "I Go",
     subtitle: "feat. Bob Sinclar",
-    coverArt: "/music/shine ttw & bob sinclar (i go).jpeg",
+    coverArt: "/music/collab-bob-sinclar-i-go.jpg",
     streamingLinks: {
       primary: "https://bobsinclar2025.lnk.to/IGo",
       appleMusic: "https://music.apple.com/us/artist/shinettw/1649199436",
@@ -65,7 +65,7 @@ export const musicData: MusicItem[] = [
     id: 4,
     title: "AUNTY MARY",
     subtitle: "feat. Spinall, Darkoo",
-    coverArt: "/music/AUNTY MARY, (Spinall, Shine ttw, Darkoo vibes).jpeg",
+    coverArt: "/music/collab-spinall-aunty-mary.jpg",
     streamingLinks: {
       primary: "https://SPINALL.lnk.to/EKOGROOVE",
       appleMusic: "https://music.apple.com/us/artist/shinettw/1649199436",

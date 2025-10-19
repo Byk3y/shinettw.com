@@ -43,7 +43,7 @@ export const eventsData: Event[] = [
     ticketUrl: "https://lagosencore.com",
     playlistUrl: "/playlist/lagos-encore",
     description: "Live performance featuring Mavo & Masktunes. Doors open at 6:30 PM, show starts at 7:00 PM.",
-    imageUrl: "/images/events/event-poster.jpg",
+    imageUrl: "/images/events/event-lagos-encore-poster.jpg",
     price: "FREE"
   },
   {

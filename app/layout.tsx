@@ -232,7 +232,7 @@ export default function RootLayout({
                   "@type": "MusicRecording",
                   "name": "I Go",
                   "description": "Collaboration with Bob Sinclar",
-                  "image": "https://shinettw.com/music/shine ttw & bob sinclar (i go).jpeg",
+                  "image": "https://shinettw.com/music/collab-bob-sinclar-i-go.jpg",
                   "byArtist": {
                     "@type": "MusicGroup",
                     "name": "Shine TTW"
@@ -244,7 +244,7 @@ export default function RootLayout({
                   "@type": "MusicRecording",
                   "name": "AUNTY MARY",
                   "description": "Collaboration with Spinall and Darkoo",
-                  "image": "https://shinettw.com/music/AUNTY MARY, (Spinall, Shine ttw, Darkoo vibes).jpeg",
+                  "image": "https://shinettw.com/music/collab-spinall-aunty-mary.jpg",
                   "byArtist": {
                     "@type": "MusicGroup",
                     "name": "Shine TTW"

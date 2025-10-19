@@ -55,6 +55,7 @@ export const musicData: MusicItem[] = [
 2. **I Go** - feat. Bob Sinclar (with primary streaming link)
 3. **AUNTY MARY** - feat. Spinall, Darkoo
 4. **TIME** - Single
+5. **LOCO** - Single (presave track)
 
 ## Features
 - **Smart LISTEN Button**: Uses primary link when available

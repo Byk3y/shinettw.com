@@ -98,7 +98,7 @@ export default function MobileMenu({ isOpen, onClose, activeSection, isBlogPage,
               {/* Website Icon */}
               <div className="mt-8 flex justify-center">
                 <img 
-                  src="/icons/shine website icon.png" 
+                  src="/icons/brand-shine-website.png" 
                   alt="Shine TTW Logo" 
                   className="w-32 h-32 object-contain hover:scale-105 transition-transform duration-300 animate-spin"
                   style={{ animationDuration: '3s' }}

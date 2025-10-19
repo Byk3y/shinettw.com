@@ -11,7 +11,7 @@ const staticPosts: BlogPost[] = [
       category: "stories" as const,
       author: "Shine TTW",
       excerpt: "An inside look at the creative process behind the collaboration with Spinall and Darkoo on AUNTY MARY",
-      featuredImage: "/music/AUNTY MARY, (Spinall, Shine ttw, Darkoo vibes).jpeg",
+      featuredImage: "/music/collab-spinall-aunty-mary.jpg",
       tags: ["collaboration", "spinall", "darkoo", "studio", "afro beats"],
       published: true
     },
