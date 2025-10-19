@@ -28,15 +28,22 @@
 
 ### For Email Marketing (Resend)
 ```html
-<!-- Static Logo (Recommended) -->
-<img src="https://shinettw.com/images/email/logo-email-80.jpg" 
+<!-- Transparent Logo (Recommended for Dark Mode) -->
+<img src="https://shinettw.com/images/email/logo-email-80-transparent.png" 
      alt="ShineTTW" 
      width="80" 
      height="80" 
      style="display:block;border:0;">
 
-<!-- Static Logo with Transparency -->
+<!-- Static Logo with Transparency (Alternative) -->
 <img src="https://shinettw.com/images/email/logo-email-80.png" 
+     alt="ShineTTW" 
+     width="80" 
+     height="80" 
+     style="display:block;border:0;">
+
+<!-- JPEG Version (White Background - Use Only if Needed) -->
+<img src="https://shinettw.com/images/email/logo-email-80.jpg" 
      alt="ShineTTW" 
      width="80" 
      height="80" 
@@ -63,8 +70,9 @@
 
 ## File URLs
 
-- **Primary (JPEG):** https://shinettw.com/images/email/logo-email-80.jpg
-- **Primary (PNG):** https://shinettw.com/images/email/logo-email-80.png
+- **Primary (Transparent PNG - Recommended):** https://shinettw.com/images/email/logo-email-80-transparent.png
+- **Alternative (PNG):** https://shinettw.com/images/email/logo-email-80.png
+- **JPEG (White Background):** https://shinettw.com/images/email/logo-email-80.jpg
 - **120px:** https://shinettw.com/images/email/logo-email-120.png
 - **160px:** https://shinettw.com/images/email/logo-email-160.png
 
