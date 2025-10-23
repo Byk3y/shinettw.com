@@ -30,15 +30,15 @@ export default function QRCodeWithLogo({
     const generateQRCode = async () => {
       if (!canvasRef.current) return;
 
+      // Set a timeout to prevent infinite loading
+      const timeoutId = setTimeout(() => {
+        setError('QR code generation timed out');
+        setIsLoading(false);
+      }, 10000); // 10 second timeout
+
       try {
         setIsLoading(true);
         setError(null);
-
-        // Set a timeout to prevent infinite loading
-        const timeoutId = setTimeout(() => {
-          setError('QR code generation timed out');
-          setIsLoading(false);
-        }, 10000); // 10 second timeout
 
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
