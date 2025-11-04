@@ -1,7 +1,15 @@
 'use server'
 
+import { headers } from 'next/headers'
 import { sendWelcomeEmail } from './email-service'
 import { addContactToBothServices, sendNewsletterWelcomeEmail } from './dual-email-service'
+import { 
+  checkRateLimit, 
+  isSuspiciousName, 
+  getClientIP, 
+  isValidEmail, 
+  checkHoneypot 
+} from './lib/security'
 
 interface FormData {
   fullName: string
@@ -15,6 +23,7 @@ interface NewsletterFormData {
   email: string
   phone: string
   country: string
+  honeypot?: string // Hidden field to catch bots
 }
 
 interface Response {
@@ -92,6 +101,30 @@ export async function subscribeToEvent(formData: FormData): Promise<Response> {
 
 export async function subscribeToNewsletter(formData: NewsletterFormData): Promise<Response> {
   try {
+    // Security check 1: Honeypot field (bots often fill hidden fields)
+    if (!checkHoneypot(formData.honeypot)) {
+      console.warn('⚠️ Bot detected: Honeypot field was filled')
+      // Return success to avoid alerting the bot
+      return {
+        success: true,
+        message: '🎉 Welcome to the Shine TTW family! Check your email for confirmation.'
+      }
+    }
+
+    // Security check 2: Rate limiting
+    const headersList = await headers()
+    const clientIP = getClientIP(headersList)
+    const rateLimitCheck = checkRateLimit(clientIP)
+    
+    if (!rateLimitCheck.allowed) {
+      console.warn(`⚠️ Rate limit exceeded for IP: ${clientIP}`)
+      return {
+        success: false,
+        message: 'Too many requests. Please try again later.'
+      }
+    }
+
+    // Validation: Required fields
     if (!formData.email || !formData.firstName || !formData.lastName || !formData.phone) {
       return {
         success: false,
@@ -99,11 +132,28 @@ export async function subscribeToNewsletter(formData: NewsletterFormData): Promi
       }
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(formData.email)) {
+    // Security check 3: Email validation
+    if (!isValidEmail(formData.email)) {
       return {
         success: false,
         message: 'Please provide a valid email address.'
+      }
+    }
+
+    // Security check 4: Name validation (detect bot-generated random strings)
+    if (isSuspiciousName(formData.firstName)) {
+      console.warn(`⚠️ Suspicious first name detected: ${formData.firstName}`)
+      return {
+        success: false,
+        message: 'Please provide a valid first name.'
+      }
+    }
+
+    if (isSuspiciousName(formData.lastName)) {
+      console.warn(`⚠️ Suspicious last name detected: ${formData.lastName}`)
+      return {
+        success: false,
+        message: 'Please provide a valid last name.'
       }
     }
 

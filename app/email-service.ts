@@ -26,6 +26,11 @@ export async function createContact(data: EmailData) {
     })
 
     if (error) {
+      // Check if it's a duplicate email error (common error code)
+      if (error.message?.includes('already exists') || error.message?.includes('duplicate')) {
+        console.log('⚠️ Contact already exists:', data.email)
+        return true // Treat duplicates as success to avoid breaking the flow
+      }
       console.log('❌ Contact creation failed:', error)
       return false
     }

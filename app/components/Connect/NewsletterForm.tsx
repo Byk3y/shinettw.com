@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useRef } from 'react'
 import { useNewsletterForm } from '../../hooks/useNewsletterForm'
 import FormField from '../Forms/FormField'
 import PhoneInput from '../Forms/PhoneInput'
@@ -8,6 +8,7 @@ import CountrySelect from '../Forms/CountrySelect'
 
 export default function NewsletterForm() {
   const { formData, status, updateField, handleSubmit } = useNewsletterForm()
+  const honeypotRef = useRef<HTMLInputElement>(null)
 
   return (
     <div className="text-center mb-12">
@@ -18,7 +19,18 @@ export default function NewsletterForm() {
         Get exclusive updates on new releases, tour dates, and behind-the-scenes content
       </p>
       
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={(e) => handleSubmit(e, honeypotRef.current?.value || '')} className="space-y-6">
+        {/* Honeypot field - Hidden from users but visible to bots */}
+        <input
+          ref={honeypotRef}
+          type="text"
+          name="honeypot"
+          tabIndex={-1}
+          autoComplete="off"
+          style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', opacity: 0, pointerEvents: 'none' }}
+          aria-hidden="true"
+        />
+        
         {/* First Name and Last Name Fields */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FormField

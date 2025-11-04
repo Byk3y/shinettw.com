@@ -61,7 +61,7 @@ export function useNewsletterForm() {
     })
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent, honeypotValue: string = '') => {
     e.preventDefault()
     
     if (!validateForm()) {
@@ -80,7 +80,8 @@ export function useNewsletterForm() {
         lastName: formData.lastName.trim(),
         email: formData.email.trim(),
         phone: `${formData.countryCode}${formData.phone.trim()}`,
-        country: formData.country.trim()
+        country: formData.country.trim(),
+        honeypot: honeypotValue // Honeypot field - should always be empty for real users
       })
 
       if (result.success) {
