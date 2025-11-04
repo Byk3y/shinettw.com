@@ -23,7 +23,8 @@ export function checkRateLimit(identifier: string): { allowed: boolean; remainin
     
     // Clean up old entries to prevent memory growth
     if (rateLimitStore.size > 1000) {
-      for (const [k, v] of rateLimitStore.entries()) {
+      const entries = Array.from(rateLimitStore.entries())
+      for (const [k, v] of entries) {
         if (v.resetAt < now) {
           rateLimitStore.delete(k)
         }
