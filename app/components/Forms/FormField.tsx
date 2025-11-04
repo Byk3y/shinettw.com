@@ -30,7 +30,7 @@ export default function FormField({
       return `input-field ${className} ${disabled ? 'disabled:opacity-50' : ''}`
     }
     // newsletter variant (default)
-    return `w-full bg-transparent border-0 border-b-2 border-red-600 text-white placeholder-gray-400 focus:outline-none focus:border-red-500 py-2 text-xl font-cyberpunk ${className}`
+    return `w-full bg-transparent border-0 border-b-2 border-red-600 text-white placeholder-gray-400 focus:outline-none focus:border-red-500 py-2 text-base sm:text-xl font-cyberpunk ${className}`
   }
 
   const getLabelClasses = () => {
@@ -38,7 +38,7 @@ export default function FormField({
       return 'block text-sm font-medium text-gray-700 mb-1'
     }
     // newsletter variant (default)
-    return 'block text-white text-base font-bold uppercase tracking-wider mb-2'
+    return 'block text-white text-sm sm:text-base font-bold uppercase tracking-wider mb-2'
   }
 
   const getUnderlineClasses = () => {

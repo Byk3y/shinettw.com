@@ -5,7 +5,7 @@ import SocialIcons from './Navigation/SocialIcons'
 
 export default function Footer() {
   return (
-    <footer className="py-12 border-t border-gray-800">
+    <footer className="pt-8 sm:pt-12 pb-12 border-t border-gray-800">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Copyright */}

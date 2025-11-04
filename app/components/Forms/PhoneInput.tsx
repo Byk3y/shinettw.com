@@ -27,7 +27,7 @@ export default function PhoneInput({
       return 'block text-sm font-medium text-gray-700 mb-1'
     }
     // newsletter variant (default)
-    return 'block text-white text-base font-bold uppercase tracking-wider mb-2'
+    return 'block text-white text-sm sm:text-base font-bold uppercase tracking-wider mb-2'
   }
 
   const getInputClasses = () => {
@@ -35,7 +35,7 @@ export default function PhoneInput({
       return `input-field flex-1 ${disabled ? 'disabled:opacity-50' : ''}`
     }
     // newsletter variant (default)
-    return 'flex-1 bg-transparent border-0 border-b-2 border-red-600 text-white placeholder-gray-400 focus:outline-none focus:border-red-500 py-2 text-xl font-cyberpunk'
+    return 'flex-1 bg-transparent border-0 border-b-2 border-red-600 text-white placeholder-gray-400 focus:outline-none focus:border-red-500 py-2 text-base sm:text-xl font-cyberpunk'
   }
 
   const getUnderlineClasses = () => {

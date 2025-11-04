@@ -11,15 +11,15 @@ export default function NewsletterForm() {
   const honeypotRef = useRef<HTMLInputElement>(null)
 
   return (
-    <div className="text-center mb-12">
-      <h3 className="text-futuristic text-white text-center mb-8 text-2xl font-bold uppercase tracking-wider">
+    <div className="text-center mb-6 sm:mb-8 max-w-2xl mx-auto px-4 sm:px-6">
+      <h3 className="text-futuristic text-white text-center mb-4 sm:mb-8 text-xl sm:text-2xl font-bold uppercase tracking-wider">
         BE THE FIRST TO KNOW
       </h3>
-      <p className="text-white text-center mb-8 text-sm">
+      <p className="text-white text-center mb-6 sm:mb-8 text-xs sm:text-sm px-2">
         Get exclusive updates on new releases, tour dates, and behind-the-scenes content
       </p>
       
-      <form onSubmit={(e) => handleSubmit(e, honeypotRef.current?.value || '')} className="space-y-6">
+      <form onSubmit={(e) => handleSubmit(e, honeypotRef.current?.value || '')} className="space-y-4 sm:space-y-6">
         {/* Honeypot field - Hidden from users but visible to bots */}
         <input
           ref={honeypotRef}
@@ -32,7 +32,7 @@ export default function NewsletterForm() {
         />
         
         {/* First Name and Last Name Fields */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           <FormField
             label="FIRST NAME"
             value={formData.firstName}
@@ -66,7 +66,7 @@ export default function NewsletterForm() {
 
         {/* Country Field */}
         <div className="text-left">
-          <label className="block text-white text-base font-bold uppercase tracking-wider mb-2">
+          <label className="block text-white text-sm sm:text-base font-bold uppercase tracking-wider mb-2">
             COUNTRY
           </label>
           <CountrySelect
@@ -78,7 +78,7 @@ export default function NewsletterForm() {
 
         {/* Privacy Policy */}
         <div className="text-center">
-          <p className="text-white text-xs leading-relaxed">
+          <p className="text-white text-[10px] sm:text-xs leading-relaxed px-2">
             EMAILS FROM SHINE TTW WILL BE SENT BY OR ON BEHALF OF SHINE TTW. YOU CAN UNSUBSCRIBE AT ANY TIME.
           </p>
         </div>
@@ -88,7 +88,7 @@ export default function NewsletterForm() {
           <button
             type="submit"
             disabled={status.isSubmitting}
-            className="bg-red-800 hover:bg-red-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-bold py-3 px-12 text-lg uppercase tracking-wider transition-all duration-300"
+            className="bg-red-800 hover:bg-red-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-bold py-2.5 sm:py-3 px-8 sm:px-12 text-base sm:text-lg uppercase tracking-wider transition-all duration-300 w-full sm:w-auto"
           >
             {status.isSubmitting ? 'SUBMITTING...' : status.isSubscribed ? 'SUBMITTED' : 'SUBMIT'}
           </button>
