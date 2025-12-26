@@ -24,7 +24,7 @@ export const musicData: MusicItem[] = [
       spotify: "https://open.spotify.com/artist/shinettw",
       youtube: "https://www.youtube.com/@shinettw"
     },
-    isPresave: true
+    isPresave: false
   },
   {
     id: 1,
