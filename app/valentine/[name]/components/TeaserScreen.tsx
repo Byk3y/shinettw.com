@@ -68,8 +68,8 @@ export default function TeaserScreen({ onContinue }: TeaserScreenProps) {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 2rem;
-          padding: 2rem;
+          gap: 1.5rem;
+          padding: 4.5rem 2rem 2rem 2rem;
           text-align: center;
         }
 
@@ -103,7 +103,7 @@ export default function TeaserScreen({ onContinue }: TeaserScreenProps) {
 
         .teaser-text {
           font-family: 'Bricolage Grotesque', system-ui, sans-serif;
-          font-size: clamp(1.5rem, 6vw, 2rem);
+          font-size: clamp(1.2rem, 5vw, 1.5rem);
           font-weight: 700;
           color: white;
           margin: 0;
