@@ -44,7 +44,7 @@ export default function IntroScreen({ displayName, onContinue }: IntroScreenProp
         </div>
 
         <button className="valentine-button" onClick={onContinue}>
-          Let's Go! 💕
+          Let&apos;s Go! 💕
         </button>
       </div>
 

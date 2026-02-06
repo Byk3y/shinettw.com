@@ -4,86 +4,86 @@ import { useState } from 'react'
 import { saveValentineFeedback } from '../../../actions'
 
 interface FeedbackScreenProps {
-    displayName: string
-    onContinue: () => void
+  displayName: string
+  onContinue: () => void
 }
 
 export default function FeedbackScreen({ displayName, onContinue }: FeedbackScreenProps) {
-    const [feedback, setFeedback] = useState('')
-    const [isSubmitting, setIsSubmitting] = useState(false)
-    const [isSubmitted, setIsSubmitted] = useState(false)
-    const [error, setError] = useState('')
+  const [feedback, setFeedback] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState('')
 
-    const handleSubmit = async () => {
-        if (!feedback.trim()) {
-            setError('Please write something first! ✍️')
-            return
-        }
-
-        setIsSubmitting(true)
-        setError('')
-
-        try {
-            const result = await saveValentineFeedback(displayName, feedback)
-            if (result.success) {
-                setIsSubmitted(true)
-                setTimeout(() => {
-                    onContinue()
-                }, 2000)
-            } else {
-                setError(result.message)
-            }
-        } catch (err) {
-            setError('Something went wrong. Try again! 💫')
-        } finally {
-            setIsSubmitting(false)
-        }
+  const handleSubmit = async () => {
+    if (!feedback.trim()) {
+      setError('Please write something first! ✍️')
+      return
     }
 
-    return (
-        <div className="feedback-screen">
-            <div className="valentine-bg" />
+    setIsSubmitting(true)
+    setError('')
 
-            <div className="content-container">
-                {!isSubmitted ? (
-                    <>
-                        <div className="header">
-                            <h2 className="title">One thing you want from me this year...</h2>
-                            <p className="subtitle">Music, videos, shows, anything! 🚀</p>
-                        </div>
+    try {
+      const result = await saveValentineFeedback(displayName, feedback)
+      if (result.success) {
+        setIsSubmitted(true)
+        setTimeout(() => {
+          onContinue()
+        }, 2000)
+      } else {
+        setError(result.message)
+      }
+    } catch (err) {
+      setError('Something went wrong. Try again! 💫')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
-                        <div className="input-container">
-                            <textarea
-                                value={feedback}
-                                onChange={(e) => {
-                                    setFeedback(e.target.value)
-                                    if (error) setError('')
-                                }}
-                                placeholder="Type your ideas here..."
-                                disabled={isSubmitting}
-                                className="feedback-input"
-                            />
-                            {error && <p className="error-text">{error}</p>}
-                        </div>
+  return (
+    <div className="feedback-screen">
+      <div className="valentine-bg" />
 
-                        <button
-                            className={`submit-button ${isSubmitting ? 'loading' : ''}`}
-                            onClick={handleSubmit}
-                            disabled={isSubmitting}
-                        >
-                            {isSubmitting ? 'Sending...' : 'Send to Shinettw 🕊️'}
-                        </button>
-                    </>
-                ) : (
-                    <div className="success-message">
-                        <h2 className="success-icon">🕊️</h2>
-                        <h2 className="title">Got it!</h2>
-                        <p className="subtitle">Can't wait to make 2026 epic with you.</p>
-                    </div>
-                )}
+      <div className="content-container">
+        {!isSubmitted ? (
+          <>
+            <div className="header">
+              <h2 className="title">One thing you want from me this year...</h2>
+              <p className="subtitle">Music, videos, shows, anything! 🚀</p>
             </div>
 
-            <style jsx>{`
+            <div className="input-container">
+              <textarea
+                value={feedback}
+                onChange={(e) => {
+                  setFeedback(e.target.value)
+                  if (error) setError('')
+                }}
+                placeholder="Type your ideas here..."
+                disabled={isSubmitting}
+                className="feedback-input"
+              />
+              {error && <p className="error-text">{error}</p>}
+            </div>
+
+            <button
+              className={`submit-button ${isSubmitting ? 'loading' : ''}`}
+              onClick={handleSubmit}
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Sending...' : 'Send to Shinettw 🕊️'}
+            </button>
+          </>
+        ) : (
+          <div className="success-message">
+            <h2 className="success-icon">🕊️</h2>
+            <h2 className="title">Got it!</h2>
+            <p className="subtitle">Can&apos;t wait to make 2026 epic with you.</p>
+          </div>
+        )}
+      </div>
+
+      <style jsx>{`
         .feedback-screen {
           min-height: 100dvh;
           width: 100%;
@@ -227,6 +227,6 @@ export default function FeedbackScreen({ displayName, onContinue }: FeedbackScre
           to { opacity: 1; transform: translateY(0); }
         }
       `}</style>
-        </div>
-    )
+    </div>
+  )
 }
