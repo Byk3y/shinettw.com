@@ -93,8 +93,8 @@ export default function MoodResultScreen({ moodId, onContinue }: MoodResultScree
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 2rem;
-          padding: 2rem;
+          gap: 1.5rem;
+          padding: 4rem 2rem 2rem 2rem;
           text-align: center;
           max-width: 450px;
         }
@@ -116,16 +116,16 @@ export default function MoodResultScreen({ moodId, onContinue }: MoodResultScree
 
         .main-text {
           font-family: 'Bricolage Grotesque', system-ui, sans-serif;
-          font-size: clamp(1.4rem, 5vw, 1.75rem);
+          font-size: clamp(1.2rem, 4.5vw, 1.5rem);
           font-weight: 700;
           color: white;
-          margin: 0 0 0.75rem 0;
+          margin: 0 0 0.5rem 0;
           line-height: 1.3;
         }
 
         .sub-text {
           font-family: 'Bricolage Grotesque', system-ui, sans-serif;
-          font-size: clamp(1rem, 4vw, 1.15rem);
+          font-size: clamp(0.9rem, 3.5vw, 1rem);
           font-weight: 400;
           color: rgba(255, 255, 255, 0.7);
           margin: 0;
