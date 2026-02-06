@@ -66,7 +66,7 @@ export default function MoodScreen({ onMoodSelected }: MoodScreenProps) {
 
       <style jsx>{`
         .mood-screen {
-          flex: 1;
+          min-height: 100dvh;
           width: 100%;
           display: flex;
           flex-direction: column;

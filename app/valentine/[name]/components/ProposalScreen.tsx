@@ -1,16 +1,15 @@
-import { useState } from 'react'
+'use client'
 
 interface ProposalScreenProps {
   onContinue: () => void
 }
 
 export default function ProposalScreen({ onContinue }: ProposalScreenProps) {
-  const [mediaLoaded, setMediaLoaded] = useState(false)
   return (
     <div className="proposal-screen">
       <div className="valentine-bg" />
 
-      <div className={`proposal-content ${mediaLoaded ? 'visible' : ''}`}>
+      <div className="proposal-content">
         {/* Message */}
         <h2 className="proposal-text">?</h2>
 
@@ -20,7 +19,6 @@ export default function ProposalScreen({ onContinue }: ProposalScreenProps) {
             src="/valentine/memes/i want to marry you.jpg"
             alt="I want to marry you"
             className="proposal-meme"
-            onLoad={() => setMediaLoaded(true)}
           />
         </div>
 
@@ -37,7 +35,7 @@ export default function ProposalScreen({ onContinue }: ProposalScreenProps) {
 
       <style jsx>{`
         .proposal-screen {
-          flex: 1;
+          min-height: 100dvh;
           width: 100%;
           display: flex;
           flex-direction: column;
@@ -78,14 +76,6 @@ export default function ProposalScreen({ onContinue }: ProposalScreenProps) {
           gap: 2rem;
           padding: 2rem;
           text-align: center;
-          opacity: 0;
-          transform: translateY(20px);
-          transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        .proposal-content.visible {
-          opacity: 1;
-          transform: translateY(0);
         }
 
         .proposal-text {

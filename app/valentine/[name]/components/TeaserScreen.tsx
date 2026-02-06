@@ -1,17 +1,15 @@
-import { useState } from 'react'
+'use client'
 
 interface TeaserScreenProps {
   onContinue: () => void
 }
 
 export default function TeaserScreen({ onContinue }: TeaserScreenProps) {
-  const [mediaLoaded, setMediaLoaded] = useState(false)
-
   return (
     <div className="teaser-screen">
       <div className="valentine-bg" />
 
-      <div className={`teaser-content ${mediaLoaded ? 'visible' : ''}`}>
+      <div className="teaser-content">
         {/* Message */}
         <h2 className="teaser-text">I have something to tell you...</h2>
 
@@ -21,7 +19,6 @@ export default function TeaserScreen({ onContinue }: TeaserScreenProps) {
             src="/valentine/memes/listen to me very carfully.jpeg"
             alt="Listen to me carefully"
             className="teaser-meme"
-            onLoad={() => setMediaLoaded(true)}
           />
         </div>
 
@@ -33,7 +30,7 @@ export default function TeaserScreen({ onContinue }: TeaserScreenProps) {
 
       <style jsx>{`
         .teaser-screen {
-          flex: 1;
+          min-height: 100dvh;
           width: 100%;
           display: flex;
           flex-direction: column;
@@ -74,14 +71,6 @@ export default function TeaserScreen({ onContinue }: TeaserScreenProps) {
           gap: 2rem;
           padding: 2rem;
           text-align: center;
-          opacity: 0;
-          transform: translateY(20px);
-          transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        .teaser-content.visible {
-          opacity: 1;
-          transform: translateY(0);
         }
 
         .teaser-meme-container {

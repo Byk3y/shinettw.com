@@ -55,7 +55,7 @@ export default function OutroScreen({ displayName }: OutroScreenProps) {
 
       <style jsx>{`
         .outro-screen {
-          flex: 1;
+          min-height: 100dvh;
           width: 100%;
           background: #050505;
           color: white;

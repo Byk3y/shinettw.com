@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 
 interface AcknowledgementScreenProps {
@@ -5,7 +7,6 @@ interface AcknowledgementScreenProps {
 }
 
 export default function AcknowledgementScreen({ onContinue }: AcknowledgementScreenProps) {
-  const [mediaLoaded, setMediaLoaded] = useState(false)
   const [step, setStep] = useState(0)
 
   const messages = [
@@ -37,7 +38,7 @@ export default function AcknowledgementScreen({ onContinue }: AcknowledgementScr
     <div className="acknowledgement-screen">
       <div className="valentine-bg" />
 
-      <div className={`acknowledgement-content ${mediaLoaded ? 'visible' : ''}`}>
+      <div className="acknowledgement-content">
         {/* Message */}
         <div className="message-container" key={step}>
           <h2 className="main-text">{messages[step].text}</h2>
@@ -50,7 +51,6 @@ export default function AcknowledgementScreen({ onContinue }: AcknowledgementScr
             src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3aW1nOWdncm8yeTlhczRnMTIxY2N2eHlwbHRiem5sMTlsY29pc3I4cSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/14gESmcGjeqSZO/giphy.gif"
             alt="Love"
             className="gif"
-            onLoad={() => setMediaLoaded(true)}
           />
         </div>
 
@@ -72,7 +72,7 @@ export default function AcknowledgementScreen({ onContinue }: AcknowledgementScr
 
       <style jsx>{`
         .acknowledgement-screen {
-          flex: 1;
+          min-height: 100dvh;
           width: 100%;
           display: flex;
           flex-direction: column;
@@ -114,14 +114,6 @@ export default function AcknowledgementScreen({ onContinue }: AcknowledgementScr
           padding: 2rem;
           text-align: center;
           max-width: 400px;
-          opacity: 0;
-          transform: translateY(20px);
-          transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        .acknowledgement-content.visible {
-          opacity: 1;
-          transform: translateY(0);
         }
 
         .message-container {
