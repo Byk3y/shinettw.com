@@ -3,12 +3,12 @@
 import { headers } from 'next/headers'
 import { sendWelcomeEmail } from './email-service'
 import { addContactToBothServices, sendNewsletterWelcomeEmail } from './dual-email-service'
-import { 
-  checkRateLimit, 
-  isSuspiciousName, 
-  getClientIP, 
-  isValidEmail, 
-  checkHoneypot 
+import {
+  checkRateLimit,
+  isSuspiciousName,
+  getClientIP,
+  isValidEmail,
+  checkHoneypot
 } from './lib/security'
 
 interface FormData {
@@ -115,7 +115,7 @@ export async function subscribeToNewsletter(formData: NewsletterFormData): Promi
     const headersList = await headers()
     const clientIP = getClientIP(headersList)
     const rateLimitCheck = checkRateLimit(clientIP)
-    
+
     if (!rateLimitCheck.allowed) {
       console.warn(`⚠️ Rate limit exceeded for IP: ${clientIP}`)
       return {
@@ -159,7 +159,7 @@ export async function subscribeToNewsletter(formData: NewsletterFormData): Promi
 
     // Add contact to both Mailchimp and Resend
     const contactResult = await addContactToBothServices(formData)
-    
+
     if (!contactResult.success) {
       return {
         success: false,
@@ -191,4 +191,51 @@ export async function subscribeToNewsletter(formData: NewsletterFormData): Promi
       message: 'Something went wrong. Please try again later.'
     }
   }
-} 
+}
+
+/**
+ * VALENTINE FLOW ACTIONS
+ */
+import { supabase } from './lib/supabase'
+
+interface FeedbackResponse {
+  success: boolean
+  message: string
+}
+
+export async function saveValentineFeedback(name: string, content: string): Promise<FeedbackResponse> {
+  try {
+    if (!content || content.trim().length === 0) {
+      return {
+        success: false,
+        message: 'Please write something before submitting.'
+      }
+    }
+
+    const { error } = await supabase
+      .from('valentine_feedback')
+      .insert([
+        { name, content }
+      ])
+
+    if (error) {
+      console.error('Supabase feedback error:', error)
+      return {
+        success: false,
+        message: 'Unable to save your response. Please try again later.'
+      }
+    }
+
+    return {
+      success: true,
+      message: '🎉 Response saved! Can\'t wait to make 2026 epic with you.'
+    }
+
+  } catch (error) {
+    console.error('Feedback save error:', error)
+    return {
+      success: false,
+      message: 'Something went wrong. Please try again later.'
+    }
+  }
+}
