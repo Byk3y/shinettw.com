@@ -1,4 +1,4 @@
-'use client'
+import { useState } from 'react'
 
 interface MoodResultScreenProps {
   moodId: string
@@ -25,13 +25,14 @@ const moodContent = {
 }
 
 export default function MoodResultScreen({ moodId, onContinue }: MoodResultScreenProps) {
+  const [mediaLoaded, setMediaLoaded] = useState(false)
   const content = moodContent[moodId as keyof typeof moodContent] || moodContent['in-love']
 
   return (
     <div className="result-screen">
       <div className="valentine-bg" />
 
-      <div className="result-content">
+      <div className={`result-content ${mediaLoaded ? 'visible' : ''}`}>
         {/* Message */}
         <div className="message-container">
           <h2 className="main-text">{content.title}</h2>
@@ -44,6 +45,7 @@ export default function MoodResultScreen({ moodId, onContinue }: MoodResultScree
             src="/valentine/memes/gwagon and roses.jpg"
             alt="G-Wagon full of roses"
             className="result-image"
+            onLoad={() => setMediaLoaded(true)}
           />
         </div>
 
@@ -55,7 +57,7 @@ export default function MoodResultScreen({ moodId, onContinue }: MoodResultScree
 
       <style jsx>{`
         .result-screen {
-          min-height: 100dvh;
+          flex: 1;
           width: 100%;
           display: flex;
           flex-direction: column;
@@ -97,6 +99,14 @@ export default function MoodResultScreen({ moodId, onContinue }: MoodResultScree
           padding: 2rem;
           text-align: center;
           max-width: 450px;
+          opacity: 0;
+          transform: translateY(20px);
+          transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .result-content.visible {
+          opacity: 1;
+          transform: translateY(0);
         }
 
         .message-container {

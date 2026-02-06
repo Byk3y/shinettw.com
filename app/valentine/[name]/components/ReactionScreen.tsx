@@ -1,23 +1,26 @@
-'use client'
+import { useState } from 'react'
 
 interface ReactionScreenProps {
   onContinue: () => void
 }
 
 export default function ReactionScreen({ onContinue }: ReactionScreenProps) {
+  const [mediaLoaded, setMediaLoaded] = useState(false)
   return (
     <div className="reaction-screen">
       <div className="valentine-bg" />
 
-      <div className="reaction-content">
+      <div className={`reaction-content ${mediaLoaded ? 'visible' : ''}`}>
         {/* Video */}
         <div className="reaction-video-container">
           <video
             src="/valentine/memes/reaction.mp4"
             autoPlay
             loop
+            muted
             playsInline
             className="reaction-video"
+            onLoadedData={() => setMediaLoaded(true)}
           />
         </div>
 
@@ -29,7 +32,7 @@ export default function ReactionScreen({ onContinue }: ReactionScreenProps) {
 
       <style jsx>{`
         .reaction-screen {
-          min-height: 100dvh;
+          flex: 1;
           width: 100%;
           display: flex;
           flex-direction: column;
@@ -70,6 +73,14 @@ export default function ReactionScreen({ onContinue }: ReactionScreenProps) {
           gap: 2rem;
           padding: 2rem;
           text-align: center;
+          opacity: 0;
+          transform: translateY(20px);
+          transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .reaction-content.visible {
+          opacity: 1;
+          transform: translateY(0);
         }
 
         .reaction-video-container {

@@ -160,7 +160,19 @@ export default function ValentinePage() {
         />
       </div>
 
+      <div className="content-wrap">
+        {renderScreen()}
+      </div>
+
       <style jsx>{`
+        .content-wrap {
+          width: 100%;
+          min-height: 100dvh;
+          padding-top: 5rem; /* Safe area for back button & progress bar */
+          display: flex;
+          flex-direction: column;
+        }
+
         .progress-container {
           position: fixed;
           top: 0;

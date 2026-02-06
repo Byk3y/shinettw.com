@@ -1,4 +1,4 @@
-'use client'
+import { useState } from 'react'
 
 interface IntroScreenProps {
   displayName: string
@@ -6,6 +6,8 @@ interface IntroScreenProps {
 }
 
 export default function IntroScreen({ displayName, onContinue }: IntroScreenProps) {
+  const [mediaLoaded, setMediaLoaded] = useState(false)
+
   return (
     <div className="valentine-intro">
       {/* Background gradient */}
@@ -29,7 +31,7 @@ export default function IntroScreen({ displayName, onContinue }: IntroScreenProp
       </div>
 
       {/* Main content */}
-      <div className="valentine-content">
+      <div className={`valentine-content ${mediaLoaded ? 'visible' : ''}`}>
         <h1 className="valentine-greeting">
           Hi {displayName}!
           <span className="wave">👋</span>
@@ -40,6 +42,7 @@ export default function IntroScreen({ displayName, onContinue }: IntroScreenProp
             src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGJrdTNud3U3Nzc4NXVsZHc4Y2VwNWx2aHc5OHkyY3FpMXJraXdvdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XD9o33QG9BoMis7iM4/giphy.gif"
             alt="Welcome"
             className="valentine-gif"
+            onLoad={() => setMediaLoaded(true)}
           />
         </div>
 
@@ -50,7 +53,7 @@ export default function IntroScreen({ displayName, onContinue }: IntroScreenProp
 
       <style jsx>{`
         .valentine-intro {
-          min-height: 100dvh;
+          flex: 1;
           width: 100%;
           display: flex;
           flex-direction: column;
@@ -118,6 +121,14 @@ export default function IntroScreen({ displayName, onContinue }: IntroScreenProp
           gap: 2rem;
           padding: 2rem;
           text-align: center;
+          opacity: 0;
+          transform: translateY(20px);
+          transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .valentine-content.visible {
+          opacity: 1;
+          transform: translateY(0);
         }
 
         .valentine-greeting {
