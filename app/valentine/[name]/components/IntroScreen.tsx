@@ -116,13 +116,13 @@ export default function IntroScreen({ displayName, onContinue }: IntroScreenProp
           flex-direction: column;
           align-items: center;
           gap: 2rem;
-          padding: 2rem;
+          padding: 4rem 2rem 2rem 2rem;
           text-align: center;
         }
 
         .valentine-greeting {
           font-family: 'Bricolage Grotesque', system-ui, sans-serif;
-          font-size: clamp(2.5rem, 10vw, 4rem);
+          font-size: clamp(2rem, 8vw, 3rem);
           font-weight: 800;
           color: white;
           margin: 0;
