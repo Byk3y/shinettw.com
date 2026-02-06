@@ -68,7 +68,7 @@ export default function ReactionScreen({ onContinue }: ReactionScreenProps) {
           flex-direction: column;
           align-items: center;
           gap: 2rem;
-          padding: 2rem;
+          padding: 4.5rem 2rem 2rem 2rem;
           text-align: center;
         }
 
