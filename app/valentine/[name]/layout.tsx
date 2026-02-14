@@ -1,8 +1,35 @@
 import { Metadata } from 'next'
 
-export const metadata: Metadata = {
-    title: 'Happy Valentine\'s Day! 💕 | Shine TTW',
-    description: 'A personalized Valentine\'s message just for you from Shine TTW',
+export async function generateMetadata({ params }: { params: { name: string } }): Promise<Metadata> {
+    const name = params.name
+    const displayName = name.charAt(0).toUpperCase() + name.slice(1)
+
+    return {
+        title: `A Surprise for ${displayName} 💌 | Shine TTW`,
+        description: `Hey ${displayName}, I made a little surprise just for you. Click to open it! ✨`,
+        openGraph: {
+            title: `A Surprise for ${displayName} 💌`,
+            description: `A personalized Valentine's message just for you from Shine TTW`,
+            images: [
+                {
+                    url: '/images/valentine/og-preview.png',
+                    width: 1200,
+                    height: 630,
+                    alt: 'Valentine Surprise',
+                },
+            ],
+            type: 'website',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: `A Surprise for ${displayName} 💌`,
+            description: `A personalized Valentine's message just for you from Shine TTW`,
+            images: ['/images/valentine/og-preview.png'],
+        },
+        alternates: {
+            canonical: `https://shinettw.com/valentine/${name}`,
+        },
+    }
 }
 
 export default function ValentineLayout({
