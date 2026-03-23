@@ -5,21 +5,33 @@ export interface MusicItem {
   coverArt: string;
   streamingLinks: {
     primary?: string;
-    appleMusic: string;
-    spotify: string;
-    youtube: string;
+    appleMusic?: string;
+    spotify?: string;
+    youtube?: string;
   };
   isPresave?: boolean; // New field to indicate if this is a presave track
+  releaseDate?: string; // Automatically switch to "LISTEN" when this date is reached
 }
 
 export const musicData: MusicItem[] = [
+  {
+    id: 99, // use a high ID or -1 to prepend
+    title: "UDE",
+    subtitle: "Single",
+    coverArt: "/music/ude.jpg",
+    streamingLinks: {
+      primary: "https://shinettw.ffm.to/ude",
+    },
+    isPresave: true,
+    releaseDate: "2026-03-25T00:00:00+01:00",
+  },
   {
     id: 0,
     title: "LOCO",
     subtitle: "Single",
     coverArt: "/music/loco-cover.jpg",
-            streamingLinks: {
-              primary: process.env.NEXT_PUBLIC_ENCORE_URL || "https://shinettw.ffm.to/loco",
+    streamingLinks: {
+      primary: process.env.NEXT_PUBLIC_ENCORE_URL || "https://shinettw.ffm.to/loco",
       appleMusic: "https://music.apple.com/us/artist/shinettw/1649199436",
       spotify: "https://open.spotify.com/artist/shinettw",
       youtube: "https://www.youtube.com/@shinettw"

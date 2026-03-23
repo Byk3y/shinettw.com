@@ -33,6 +33,13 @@ export default function MusicCarousel() {
 
   const currentItem = musicData[currentSlide]
 
+  const isCurrentlyPresave = (item: typeof musicData[0]) => {
+    if (item.releaseDate) {
+      return new Date() < new Date(item.releaseDate);
+    }
+    return item.isPresave;
+  };
+
   // Swipe functionality
   const minSwipeDistance = 50
 
@@ -113,7 +120,7 @@ export default function MusicCarousel() {
                   window.open(listenUrl, '_blank');
                 }}
               >
-                {currentItem.isPresave ? 'PRESAVE' : 'LISTEN'}
+                {isCurrentlyPresave(currentItem) ? 'PRESAVE' : 'LISTEN'}
               </button>
             </div>
           </div>
@@ -200,7 +207,7 @@ export default function MusicCarousel() {
                 window.open(listenUrl, '_blank');
               }}
             >
-              {currentItem.isPresave ? 'PRESAVE' : 'LISTEN'}
+              {isCurrentlyPresave(currentItem) ? 'PRESAVE' : 'LISTEN'}
             </button>
             
             {/* Watch Video Link for TIME track */}
